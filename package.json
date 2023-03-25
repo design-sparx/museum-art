@@ -6,17 +6,38 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@mantine/carousel": "^6.0.2",
+    "@mantine/core": "^6.0.2",
+    "@mantine/hooks": "^6.0.2",
+    "@mantine/modals": "^6.0.2",
+    "@mantine/next": "^6.0.2",
+    "@mantine/notifications": "^6.0.2",
+    "@mantine/nprogress": "^6.0.2",
+    "@tabler/icons-react": "^2.10.0",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "embla-carousel-react": "^7.1.0",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.2"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.7.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "2.8.4"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

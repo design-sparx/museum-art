@@ -1,0 +1,71 @@
+{
+  "data": [
+    {
+      "title": "About Us",
+      "links": [
+        {
+          "label": "Governance",
+          "link": "#"
+        },
+        {
+          "label": "Museum Story",
+          "link": "#"
+        },
+        {
+          "label": "Jobs",
+          "link": "#"
+        },
+        {
+          "label": "Press",
+          "link": "#"
+        },
+        {
+          "label": "Contact Us",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "title": "Visit",
+      "links": [
+        {
+          "label": "Map",
+          "link": "#"
+        },
+        {
+          "label": "Exhibitions and Events",
+          "link": "#"
+        },
+        {
+          "label": "Accessibility",
+          "link": "#"
+        },
+        {
+          "label": "Audio Guide",
+          "link": "#"
+        }
+      ]
+    },
+    {
+      "title": "Resources",
+      "links": [
+        {
+          "label": "Study Rooms",
+          "link": "#"
+        },
+        {
+          "label": "Library and Archive",
+          "link": "#"
+        },
+        {
+          "label": "Blog",
+          "link": "#"
+        },
+        {
+          "label": "Community",
+          "link": "#"
+        }
+      ]
+    }
+  ]
+}
