@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Wrapper from "@/layout";
-import EventsSection from "@/section/Home/Events";
+import EventsSection from "@/section/shared/Events";
 import InfoSection from "@/section/Home/Info";
 import VisitSection from "@/section/Home/Visit";
 import HeroSection from "@/section/Home/Hero";
-import DonationSection from "@/section/Home/Donation";
+import DonationSection from "@/section/shared/Donation";
 import DiscoverSection from "@/section/Home/Discover";
-import SupportSection from "@/section/Home/Support";
+import SupportSection from "@/section/shared/Support";
 
 export default function Home() {
   return (

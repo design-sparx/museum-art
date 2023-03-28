@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/nextjs,phpstorm+all
-# Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,phpstorm+all
+# Created by https://www.toptal.com/developers/gitignore/api/phpstorm+all,nextjs
+# Edit at https://www.toptal.com/developers/gitignore?templates=phpstorm+all,nextjs
 
 ### NextJS ###
 # dependencies
@@ -121,8 +121,9 @@ fabric.properties
 # that are supposed to be shared within teams.
 
 .idea/*
+.idea/codeStyles/*
 
 !.idea/codeStyles
 !.idea/runConfigurations
 
-# End of https://www.toptal.com/developers/gitignore/api/nextjs,phpstorm+all
+# End of https://www.toptal.com/developers/gitignore/api/phpstorm+all,nextjs

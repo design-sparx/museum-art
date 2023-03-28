@@ -15,7 +15,13 @@ export default function DonationSection() {
       <BackgroundImage
         src="https://images.unsplash.com/photo-1572953109213-3be62398eb95?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
         radius={0}
-        sx={{ height: "100%" }}
+        sx={{
+          height: "100%",
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
       >
         <Stack justify="center" sx={{ height: "100%" }}>
           <Container>
