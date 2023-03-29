@@ -78,7 +78,10 @@ const data = [
   },
 ];
 
-export default function EventsSection() {
+interface IProps {
+  title?: string;
+}
+export default function CarouselEventsSection({ title }: IProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [embla, setEmbla] = useState<Embla | null>(null);
 
@@ -128,7 +131,7 @@ export default function EventsSection() {
       <Flex>
         <Flex>
           <Stack>
-            <Title>Exhibitions and events</Title>
+            <Title>{title ?? "Exhibitions and events"}</Title>
             <Text>Don&apos;t Miss The Opportunity</Text>
           </Stack>
           <Button>view all</Button>

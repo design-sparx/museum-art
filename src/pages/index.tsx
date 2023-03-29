@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Wrapper from "@/layout";
-import EventsSection from "@/section/shared/Events";
+import CarouselEventsSection from "@/section/shared/CarouselEvents";
 import InfoSection from "@/section/Home/Info";
 import VisitSection from "@/section/Home/Visit";
 import HeroSection from "@/section/Home/Hero";
@@ -20,7 +20,7 @@ export default function Home() {
       <Wrapper>
         <HeroSection />
         <InfoSection />
-        <EventsSection />
+        <CarouselEventsSection />
         <VisitSection />
         <DonationSection />
         <DiscoverSection />
