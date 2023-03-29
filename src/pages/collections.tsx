@@ -4,6 +4,7 @@ import {
   CollectionsSection,
   FeaturesSection,
   HeroSection,
+  LinksSection,
 } from "@/section/Collections";
 import DonationSection from "@/section/shared/Donation";
 import SupportSection from "@/section/shared/Support";
@@ -18,6 +19,7 @@ export default function Collections() {
         <HeroSection />
         <FeaturesSection />
         <CollectionsSection />
+        <LinksSection />
         <DonationSection />
         <SupportSection />
       </Wrapper>
