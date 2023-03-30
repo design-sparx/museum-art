@@ -71,12 +71,8 @@ const mockdata = [
     link: "/collections",
   },
   {
-    label: "About",
-    link: "/about",
-  },
-  {
-    label: "Contact",
-    link: "/contact",
+    label: "Support Us",
+    link: "/support",
   },
 ];
 
