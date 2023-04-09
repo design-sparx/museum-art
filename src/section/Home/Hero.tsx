@@ -10,6 +10,7 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
+import { IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -23,13 +24,13 @@ const useStyles = createStyles((theme) => ({
     objectPosition: "bottom",
   },
   content: {
-    marginTop: rem(-240),
+    marginTop: rem(-320),
     paddingBottom: rem(96),
   },
 }));
 export default function HeroSection() {
   const videoRef = useRef<any>(null);
-  const [pause, setPause] = useState(true);
+  const [pause, setPause] = useState(false);
   const { classes } = useStyles();
 
   const pauseVideo = (): void => {
@@ -43,7 +44,7 @@ export default function HeroSection() {
   };
 
   useEffect(() => {
-    videoRef.current.pause();
+    videoRef.current.play();
   }, []);
 
   return (
@@ -57,18 +58,30 @@ export default function HeroSection() {
       <Container className={classes.content}>
         <Stack align="flex-start" justify="end" pb="xl" sx={{ height: "100%" }}>
           <Paper p="md" shadow="md">
-            <Text size="xl" weight={600} mb="md">
+            <Text size={36} weight={600} mb="md" align="center">
               Welcome to the Lorem Ipsum Museum
             </Text>
-            <Text mb="md">
+            <Text mb="md" size="lg" align="center">
               Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
               cupidatat non proident, sunt in culpa qui officia deserunt mollit
               anim id est laborum.
             </Text>
-            <Flex>
-              <Button size="md">Plan your visit</Button>
-              <Button onClick={pauseVideo}>{pause ? "Play" : "Pause"}</Button>
+            <Flex justify="space-between" align="center">
+              <Button size="lg">Learn More</Button>
+              <Button
+                variant="white"
+                leftIcon={
+                  pause ? (
+                    <IconPlayerPlay size={18} />
+                  ) : (
+                    <IconPlayerPause size={18} />
+                  )
+                }
+                onClick={pauseVideo}
+              >
+                {pause ? "Play" : "Pause"} background video
+              </Button>
             </Flex>
           </Paper>
         </Stack>

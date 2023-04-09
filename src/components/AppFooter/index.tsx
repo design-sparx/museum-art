@@ -1,5 +1,6 @@
 import {
   ActionIcon,
+  ActionIconProps,
   Button,
   Container,
   createStyles,
@@ -26,8 +27,6 @@ import React from "react";
 const useStyles = createStyles((theme) => ({
   footer: {
     marginTop: rem(120),
-    paddingTop: `calc(${theme.spacing.xl} * 2)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.colors.dark[6]
@@ -35,6 +34,11 @@ const useStyles = createStyles((theme) => ({
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
+  },
+
+  container: {
+    paddingTop: theme.spacing.xl,
+    paddingBottom: theme.spacing.xl,
   },
 
   logo: {
@@ -84,10 +88,10 @@ const useStyles = createStyles((theme) => ({
     color:
       theme.colorScheme === "dark"
         ? theme.colors.dark[1]
-        : theme.colors.gray[6],
-    fontSize: theme.fontSizes.sm,
-    paddingTop: rem(3),
-    paddingBottom: rem(3),
+        : theme.colors.dark[8],
+    fontSize: theme.fontSizes.md,
+    paddingTop: rem(4),
+    paddingBottom: rem(4),
 
     "&:hover": {
       textDecoration: "underline",
@@ -97,7 +101,6 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontSize: theme.fontSizes.lg,
     fontWeight: 700,
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     marginBottom: `calc(${theme.spacing.xs} / 2)`,
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
   },
@@ -135,6 +138,13 @@ interface FooterLinksProps {
 export default function AppFooter({ data }: FooterLinksProps) {
   const { classes } = useStyles();
 
+  const actionIconProps: ActionIconProps = {
+    size: "xl",
+    variant: "light",
+    radius: "xl",
+    color: "violet",
+  };
+
   const groups = data.map((group) => {
     const links = group.links.map((link, index) => (
       <Text<"a">
@@ -158,43 +168,47 @@ export default function AppFooter({ data }: FooterLinksProps) {
 
   return (
     <footer className={classes.footer}>
-      <Container fluid>
-        <Flex>
-          <Stack>
-            <Title>Connect with us</Title>
-            <Flex>
-              <ActionIcon>
+      <Container fluid className={classes.container}>
+        <Flex align="center" justify="space-between">
+          <Stack spacing="sm">
+            <Title order={2}>Connect with us</Title>
+            <Flex gap="sm">
+              <ActionIcon title="facebook" {...actionIconProps}>
                 <IconBrandFacebook />
               </ActionIcon>
-              <ActionIcon>
+              <ActionIcon title="twitter" {...actionIconProps}>
                 <IconBrandTwitter />
               </ActionIcon>
-              <ActionIcon>
+              <ActionIcon title="instagram" {...actionIconProps}>
                 <IconBrandInstagram />
               </ActionIcon>
-              <ActionIcon>
+              <ActionIcon title="youtube" {...actionIconProps}>
                 <IconBrandYoutube />
               </ActionIcon>
-              <ActionIcon>
+              <ActionIcon title="linkedin" {...actionIconProps}>
                 <IconBrandLinkedin />
               </ActionIcon>
             </Flex>
           </Stack>
-          <Stack>
-            <Text>Enter your email address to receive our newsletter</Text>
-            <Flex>
-              <TextInput />
-              <Button>Signup</Button>
+          <Stack spacing="sm">
+            <Text size="lg">
+              Enter your email address to receive our newsletter
+            </Text>
+            <Flex gap="xs">
+              <TextInput size="md" sx={{ flexGrow: 1 }} />
+              <Button size="md" variant="filled">
+                Signup
+              </Button>
             </Flex>
           </Stack>
         </Flex>
       </Container>
       <Divider />
-      <Container fluid>
+      <Container fluid className={classes.container}>
         <SimpleGrid cols={4}>
           <Stack>
-            <Stack>
-              <Flex>
+            <Stack spacing="sm">
+              <Flex gap="md" align="center">
                 <IconMap2 size={36} />
                 <Text size="lg" weight={500}>
                   Where You Visit
@@ -204,8 +218,8 @@ export default function AppFooter({ data }: FooterLinksProps) {
               <Text>Nairobi, XYZ Building</Text>
               <Text>+254 000 000 000</Text>
             </Stack>
-            <Stack>
-              <Flex>
+            <Stack spacing="sm">
+              <Flex gap="md" align="center">
                 <IconClock size={36} />
                 <Text size="lg" weight={500}>
                   Opening Times
@@ -219,22 +233,25 @@ export default function AppFooter({ data }: FooterLinksProps) {
         </SimpleGrid>
       </Container>
       <Divider />
-      <Container fluid>
-        <Flex>
-          <Button>Privacy Policy</Button>
-          <Button>Cookies</Button>
-          <Button>Terms of Use</Button>
+      <Container fluid className={classes.container}>
+        <Flex justify="space-between" align="center">
+          <Flex gap="sm" justify="center" align="center">
+            <Button variant="subtle">Privacy Policy</Button>
+            <Button variant="subtle">Cookies</Button>
+            <Button variant="subtle">Terms of Use</Button>
+          </Flex>
           <Text>&copy;{new Date().getFullYear()} Art & History Museum</Text>
-        </Flex>
-        <Flex>
-          <Text>Site created by&nbsp;</Text>
-          <Button
-            component="a"
-            target="_blank"
-            href="https://github.com/kelvink96"
-          >
-            Kelvin
-          </Button>
+          <Flex justify="center" align="center">
+            <Text>Site created by:&nbsp;</Text>
+            <Button
+              component="a"
+              target="_blank"
+              href="https://github.com/kelvink96"
+              variant="subtle"
+            >
+              Kelvin
+            </Button>
+          </Flex>
         </Flex>
       </Container>
     </footer>

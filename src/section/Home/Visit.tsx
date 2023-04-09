@@ -32,16 +32,22 @@ const data = [
 
 export default function VisitSection() {
   return (
-    <Container fluid>
-      <Title>Visit the Museum</Title>
-      <Text>3 steps to be safe (COVID-19 Guidelines Observed)</Text>
-      <SimpleGrid cols={3}>
+    <Container fluid pt={80} pb={120}>
+      <Title size={48} align="center" mb="md">
+        Visit the Museum
+      </Title>
+      <Text size="lg" align="center" mb="xl">
+        3 steps to be safe (COVID-19 Guidelines Observed)
+      </Text>
+      <SimpleGrid cols={3} spacing="lg">
         {data.map((item, i) => (
           <Paper key={`visit-item-${i}`}>
-            <Image src={item.image} alt={item.title} height={320} />
-            <Text>{item.title}</Text>
-            <Text>{item.text}</Text>
-            <Button>Learn More</Button>
+            <Image src={item.image} alt={item.title} height={320} radius="sm" />
+            <Text size="xl" weight={600} pt="md">
+              {item.title}
+            </Text>
+            <Text my="sm">{item.text}</Text>
+            <Button variant="light">Learn More</Button>
           </Paper>
         ))}
       </SimpleGrid>

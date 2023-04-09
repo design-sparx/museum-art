@@ -2,6 +2,7 @@ import {
   Box,
   Burger,
   Button,
+  ButtonProps,
   createStyles,
   Divider,
   Drawer,
@@ -9,25 +10,19 @@ import {
   Header,
   rem,
   ScrollArea,
+  Title,
   UnstyledButton,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import Image from "next/image";
-import LogoImg from "../../../public/static/img/logo/logo-color.png";
+import { IconSearch } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   header: {
     border: "none",
+    padding: `${theme.spacing.lg} ${theme.spacing.xl}`,
   },
   link: {
-    display: "flex",
-    alignItems: "center",
-    height: "100%",
-    padding: theme.spacing.md,
-    textDecoration: "none",
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    fontWeight: 500,
-    fontSize: theme.fontSizes.md,
 
     [theme.fn.smallerThan("sm")]: {
       height: rem(42),
@@ -76,40 +71,50 @@ const mockdata = [
   },
 ];
 
-export default function TopNav() {
+interface IProps {
+  handleOpenSearch: () => void;
+}
+
+export default function TopNav({ handleOpenSearch }: IProps) {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const { classes, theme } = useStyles();
 
+  const buttonProps: ButtonProps = {
+    variant: "subtle",
+    size: "sm",
+  };
+
   const links = mockdata.map((item) => (
-    <UnstyledButton className={classes.link} key={item.label}>
+    <Button className={classes.link} key={item.label} {...buttonProps}>
       {item.label}
-    </UnstyledButton>
+    </Button>
   ));
 
   return (
     <Box>
       <Header height="100%" px="md" className={classes.header}>
         <Group position="apart" sx={{ height: "100%" }}>
-          <Group>
-            <Image
-              src={LogoImg}
-              alt="Museum Logo"
-              style={{ height: 80, width: 144, objectFit: "cover" }}
-            />
-          </Group>
+          <UnstyledButton>
+            <Title order={2}>Museum & Art</Title>
+          </UnstyledButton>
 
           <Group
             sx={{ height: "100%" }}
-            spacing={0}
+            spacing="xs"
             className={classes.hiddenMobile}
           >
             {links}
-          </Group>
-
-          <Group className={classes.hiddenMobile}>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button
+              className={classes.link}
+              key="search button"
+              leftIcon={<IconSearch size={18} />}
+              onClick={handleOpenSearch}
+              {...buttonProps}
+            >
+              Search
+            </Button>
+            <Button size="md">Donate</Button>
           </Group>
 
           <Burger

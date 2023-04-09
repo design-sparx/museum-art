@@ -1,19 +1,29 @@
 import {
+  ActionIcon,
+  ActionIconProps,
   Badge,
   Box,
   Button,
+  Center,
   Container,
+  createStyles,
   Flex,
   Image,
   Paper,
   Progress,
   rem,
+  Spoiler,
   Stack,
   Text,
   Title,
 } from "@mantine/core";
 import { Carousel, Embla } from "@mantine/carousel";
 import React, { useCallback, useEffect, useState } from "react";
+import {
+  IconArrowLeftBar,
+  IconArrowRightBar,
+  IconCalendarTime,
+} from "@tabler/icons-react";
 
 const data = [
   {
@@ -78,12 +88,29 @@ const data = [
   },
 ];
 
+const useStyles = createStyles((theme) => ({
+  link: {
+    "&:hover, &:focus": {
+      textDecoration: "underline",
+      cursor: "pointer",
+    },
+  },
+}));
+
 interface IProps {
   title?: string;
 }
+
 export default function CarouselEventsSection({ title }: IProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [embla, setEmbla] = useState<Embla | null>(null);
+  const { classes } = useStyles();
+
+  const actionIconProps: ActionIconProps = {
+    size: "xl",
+    variant: "subtle",
+    color: "violet",
+  };
 
   const handleScroll = useCallback(() => {
     if (!embla) return;
@@ -112,48 +139,67 @@ export default function CarouselEventsSection({ title }: IProps) {
         <Image
           src={item.image}
           alt={item.title}
-          height={360}
-          width={480}
+          height={278}
+          width="100%"
           fit="cover"
+          radius="sm"
         />
-        <Box p="md">
-          <Badge>{item.type} exhibition</Badge>
-          <Text>{item.title}</Text>
-          <Text>{item.date}</Text>
-          <Text>{item.description}</Text>
+        <Box py="md" px={0}>
+          <Stack align="start" spacing="xs">
+            <Badge size="lg" variant="filled" radius="xs">
+              {item.type} exhibition
+            </Badge>
+            <Text size="xl" weight={600} component="a" className={classes.link}>
+              {item.title}
+            </Text>
+            <Flex gap="xs" align="center">
+              <IconCalendarTime size={14} />
+              <Text size="sm" transform="capitalize">
+                {item.date}
+              </Text>
+            </Flex>
+            <Spoiler maxHeight={48} showLabel="Show more" hideLabel="Hide">
+              <Text>{item.description}</Text>
+            </Spoiler>
+          </Stack>
         </Box>
       </Paper>
     </Carousel.Slide>
   ));
 
   return (
-    <Container fluid sx={{ overflow: "hidden" }}>
-      <Flex>
-        <Flex>
-          <Stack>
-            <Title>{title ?? "Exhibitions and events"}</Title>
-            <Text>Don&apos;t Miss The Opportunity</Text>
-          </Stack>
-          <Button>view all</Button>
-        </Flex>
-        <Flex>
-          <Button onClick={handlePrevious}>Previous</Button>
-          <Button onClick={handleNext}>Next</Button>
+    <Container fluid pt={80} pb={120} sx={{ overflow: "hidden" }}>
+      <Flex justify="space-between" align="center">
+        <Title size={48}>{title ?? "Exhibitions and events"}</Title>
+        <Flex gap="md">
+          <ActionIcon
+            onClick={handlePrevious}
+            title="previous slide"
+            {...actionIconProps}
+          >
+            <IconArrowLeftBar />
+          </ActionIcon>
+          <ActionIcon
+            onClick={handleNext}
+            title="next slide"
+            {...actionIconProps}
+          >
+            <IconArrowRightBar />
+          </ActionIcon>
         </Flex>
       </Flex>
       <Progress
         value={scrollProgress}
         styles={{
           bar: { transitionDuration: "0ms" },
-          root: { maxWidth: rem(320) },
+          root: { maxWidth: "100%" },
         }}
-        size="sm"
-        mt="xl"
+        size="xs"
         mx="auto"
-        my="md"
+        my="lg"
       />
       <Carousel
-        slideSize="30%"
+        slideSize="33%"
         breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: rem(2) }]}
         slideGap="md"
         align="start"
@@ -165,6 +211,11 @@ export default function CarouselEventsSection({ title }: IProps) {
       >
         {slides}
       </Carousel>
+      <Center mt="xl">
+        <Button size="xl" variant="light">
+          View all Upcoming Events
+        </Button>
+      </Center>
     </Container>
   );
 }

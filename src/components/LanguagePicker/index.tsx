@@ -42,7 +42,7 @@ const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: `.5rem 1rem`,
+    padding: `.4rem 1rem`,
     borderRadius: theme.radius.sm,
     border: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[3]
@@ -59,7 +59,7 @@ const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[5]
-          : theme.colors.gray[0],
+          : theme.colors.gray[1],
     },
   },
 

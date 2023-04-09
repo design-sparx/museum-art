@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonProps,
   Container,
   createStyles,
   Divider,
@@ -14,16 +15,16 @@ import React, { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import LanguagePicker from "@/components/LanguagePicker";
 
-const HEADER_HEIGHT = rem(48);
+const { Slide } = Carousel;
 
 const useStyles = createStyles((theme) => ({
   inner: {
-    height: HEADER_HEIGHT,
+    height: "100%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingLeft: theme.spacing.xl,
-    paddingRight: theme.spacing.xl,
+    padding: `${theme.spacing.sm} ${theme.spacing.xl}`,
+    borderBottom: `1px solid ${theme.colors.gray[3]}`,
   },
 
   links: {
@@ -62,48 +63,65 @@ const useStyles = createStyles((theme) => ({
   linkLabel: {
     marginRight: rem(5),
   },
+
+  announcementCard: {
+    backgroundColor: theme.colors.violet[0],
+    color: theme.black,
+    textAlign: "center",
+    padding: rem(8),
+  },
 }));
+
+const announcementsData = [
+  "Announcements from Museum",
+  "Tickets available for 2023 auction event",
+  "Our COVID-19 Policy",
+];
 
 export default function TopBar() {
   const { classes } = useStyles();
   const autoplay = useRef(Autoplay({ delay: 15000 }));
 
+  const buttonProps: ButtonProps = {
+    variant: "subtle",
+  };
+
   return (
-    <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0 }}>
+    <Header height="100%" sx={{ borderBottom: 0 }}>
       <Container className={classes.inner} fluid>
-        <Group spacing={5} className={classes.links}>
-          <Text>OPEN TODAY AT 12 P.M.</Text>
+        <Group spacing="xs" className={classes.links}>
+          <Text size="sm" weight={600}>
+            OPEN TODAY AT 12 P.M.
+          </Text>
           <Divider orientation="vertical" />
           <Carousel
+            slideSize="100%"
             mx="auto"
-            withIndicators
-            height={20}
+            align="start"
+            withIndicators={false}
+            loop={true}
+            draggable={false}
+            height={36}
             orientation="vertical"
             plugins={[autoplay.current]}
             onMouseEnter={autoplay.current.stop}
             onMouseLeave={autoplay.current.reset}
             withControls={false}
           >
-            <Carousel.Slide>
-              <Paper>
-                <Text>Announcements from Museum</Text>
-              </Paper>
-            </Carousel.Slide>
-            <Carousel.Slide>
-              <Paper>
-                <Text>Tickets available for 2023 auction event</Text>
-              </Paper>
-            </Carousel.Slide>
-            <Carousel.Slide>
-              <Paper>
-                <Text>Our COVID-19 Policy</Text>
-              </Paper>
-            </Carousel.Slide>
+            {announcementsData.map((a, i) => (
+              <Slide key={`announcement-${i}`}>
+                <Paper className={classes.announcementCard}>
+                  <Text size="sm" weight={500} transform="uppercase">
+                    {a}
+                  </Text>
+                </Paper>
+              </Slide>
+            ))}
           </Carousel>
         </Group>
-        <Group spacing={5}>
-          <Button>Join & Give</Button>
-          <Button>Museum Shop</Button>
+        <Group spacing="sm">
+          <Button {...buttonProps}>Join & Give</Button>
+          <Button {...buttonProps}>Museum Shop</Button>
           <LanguagePicker />
         </Group>
       </Container>
