@@ -139,7 +139,7 @@ export default function CarouselEventsSection({ title }: IProps) {
         <Image
           src={item.image}
           alt={item.title}
-          height={278}
+          height={360}
           width="100%"
           fit="cover"
           radius="sm"

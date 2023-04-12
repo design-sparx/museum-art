@@ -15,6 +15,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons-react";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -86,7 +87,13 @@ export default function TopNav({ handleOpenSearch }: IProps) {
   };
 
   const links = mockdata.map((item) => (
-    <Button className={classes.link} key={item.label} {...buttonProps}>
+    <Button
+      className={classes.link}
+      key={item.label}
+      component={Link}
+      href={item.link}
+      {...buttonProps}
+    >
       {item.label}
     </Button>
   ));

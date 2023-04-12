@@ -1,22 +1,40 @@
 import {
   Button,
+  Center,
   Container,
   List,
   Paper,
+  PaperProps,
   Stack,
   Text,
   Title,
+  TitleProps,
+  useMantineTheme,
 } from "@mantine/core";
 import React from "react";
 
 const { Item } = List;
 
 export default function WelcomeSection() {
+  const theme = useMantineTheme();
+  const paperProps: PaperProps = {
+    withBorder: true,
+    p: "lg",
+    sx: {
+      backgroundColor: theme.colors.gray[0],
+    },
+  };
+
+  const titleProps: TitleProps = {
+    order: 3,
+    mb: "md",
+  };
+
   return (
-    <Container fluid>
-      <Stack>
-        <Paper>
-          <Title>Museum Hours</Title>
+    <Container pt={80} pb={120}>
+      <Stack spacing="lg">
+        <Paper {...paperProps}>
+          <Title {...titleProps}>Museum Hours</Title>
           <List>
             <Item>
               Tuesday, Wednesday, Friday–Sunday: 11 a.m.–5 p.m.; last entry is
@@ -31,8 +49,8 @@ export default function WelcomeSection() {
             </Item>
           </List>
         </Paper>
-        <Paper>
-          <Title>Advance Timed Ticketing</Title>
+        <Paper {...paperProps}>
+          <Title {...titleProps}>Advance Timed Ticketing</Title>
           <List>
             <Item>Timed, advance tickets are recommended.</Item>
             <Item>
@@ -45,8 +63,8 @@ export default function WelcomeSection() {
             <Item>Tickets are released four weeks in advance.</Item>
           </List>
         </Paper>
-        <Paper>
-          <Title>Before You Arrive</Title>
+        <Paper {...paperProps}>
+          <Title {...titleProps}>Before You Arrive</Title>
           <List>
             <Item>
               Please print your ticket or download it to your mobile device.
@@ -70,8 +88,8 @@ export default function WelcomeSection() {
             </Item>
           </List>
         </Paper>
-        <Paper>
-          <Title>When You Arrive</Title>
+        <Paper {...paperProps}>
+          <Title {...titleProps}>When You Arrive</Title>
           <List>
             <Item>Scan your ticket at self scanning stations.</Item>
             <Item>
@@ -89,8 +107,8 @@ export default function WelcomeSection() {
             </Item>
           </List>
         </Paper>
-        <Paper>
-          <Title>Visitor Policies</Title>
+        <Paper {...paperProps}>
+          <Title {...titleProps}>Visitor Policies</Title>
           <List>
             <Item>
               Masks are strongly recommended, except for children ages two and
@@ -124,7 +142,9 @@ export default function WelcomeSection() {
           visit.
         </Text>
         <Text>We look forward to welcoming you.</Text>
-        <Button>Get Tickets</Button>
+        <Center>
+          <Button size="lg">Get Tickets</Button>
+        </Center>
       </Stack>
     </Container>
   );

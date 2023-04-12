@@ -28,7 +28,9 @@ export default function SupportSection() {
   return (
     <Container fluid pt={80} pb={120} sx={{ overflow: "hidden" }}>
       <Box mb="xl" sx={{ textAlign: "center" }}>
-        <Title mb="md">Support the Museum</Title>
+        <Title size={48} mb="md">
+          Support the Museum
+        </Title>
         <Text size="lg">Join today and Enjoy unlimited</Text>
       </Box>
       <SimpleGrid cols={3}>

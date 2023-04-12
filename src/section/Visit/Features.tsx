@@ -33,13 +33,17 @@ const data = [
 
 export default function FeaturesSection() {
   return (
-    <Container fluid>
-      <Title>Ways to explore</Title>
-      <SimpleGrid cols={3}>
+    <Container fluid pt={80} pb={120}>
+      <Title size={48} align="center" mb="xl">
+        Ways to explore
+      </Title>
+      <SimpleGrid cols={3} spacing="md">
         {data.map((d, i) => (
           <Paper key={`visit-feature-${i}`}>
-            <Image src={d.image} alt={d.title} height={400} />
-            <Title>{d.title}</Title>
+            <Image src={d.image} alt={d.title} height={360} radius="sm" />
+            <Title order={3} my="md">
+              {d.title}
+            </Title>
             <Text>{d.description}</Text>
           </Paper>
         ))}

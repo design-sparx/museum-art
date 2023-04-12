@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
   },
   bg: {
     backgroundImage: `url(https://images.unsplash.com/photo-1575223970966-76ae61ee7838?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)`,
-    minHeight: rem(600),
+    minHeight: rem(650),
     /* Create the parallax scrolling effect */
     backgroundAttachment: "fixed",
     backgroundPosition: "center",
@@ -23,7 +23,7 @@ const useStyles = createStyles((theme) => ({
     backgroundSize: "cover",
   },
   container: {
-    height: rem(600),
+    height: rem(650),
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
@@ -81,7 +81,7 @@ export default function HeroSection() {
             For the latest updates about reopening, booking tickets and
             what&apos;s happening at the Museum, sign up to our newsletter
           </Text>
-          <Button mt="xl" size="md">
+          <Button mt="xl" size="lg" variant="filled">
             Book Now
           </Button>
         </Container>

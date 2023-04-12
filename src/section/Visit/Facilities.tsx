@@ -33,13 +33,17 @@ const data = [
 
 export default function FacilitiesSection() {
   return (
-    <Container fluid>
-      <Title>Facilities</Title>
-      <SimpleGrid cols={3}>
+    <Container fluid pt={80} pb={120}>
+      <Title size={48} mb="xl" align="center">
+        Facilities
+      </Title>
+      <SimpleGrid cols={3} spacing="lg">
         {data.map((d, i) => (
           <Paper key={`visit-feature-${i}`}>
-            <Image src={d.image} alt={d.title} height={400} />
-            <Title>{d.title}</Title>
+            <Image src={d.image} alt={d.title} height={360} radius="sm" />
+            <Title order={2} my="md" transform="capitalize">
+              {d.title}
+            </Title>
             <Text>{d.description}</Text>
           </Paper>
         ))}
