@@ -1,6 +1,8 @@
 import {
   Button,
+  Center,
   Container,
+  Divider,
   Grid,
   Image,
   Paper,
@@ -63,26 +65,37 @@ const data = [
 ];
 export default function Collections() {
   const items = data.map((d, i) => (
-    <Paper key={`collection-item-${i}`}>
-      <Grid>
+    <Paper key={`collection-item-${i}`} p="md">
+      <Grid gutter="md" sx={{ alignItems: "center" }}>
         <Col lg={3}>
-          <Image src={d.image} alt={d.title} height={240} />
-          <Text>{d.imageDescription}</Text>
+          <Image src={d.image} alt={d.title} height={240} radius="sm" mb="sm" />
+          <Text align="center" italic>
+            {d.imageDescription}
+          </Text>
         </Col>
         <Col lg={9}>
-          <Title>{d.title}</Title>
-          <Text>{d.description}</Text>
-          <Button>Explore</Button>
+          <Title order={3}>{d.title}</Title>
+          <Text my="md">{d.description}</Text>
+          <Button size="md" variant="light">
+            Explore
+          </Button>
         </Col>
       </Grid>
+      <Divider mt="sm" variant="dotted" />
     </Paper>
   ));
 
   return (
-    <Container fluid>
-      <Title>Featured Collections</Title>
+    <Container fluid pt={80} pb={120}>
+      <Title size={48} mb="xl">
+        Featured Collections
+      </Title>
       <Stack>{items}</Stack>
-      <Button>Explore More Featured Collections</Button>
+      <Center>
+        <Button size="lg" variant="light">
+          Explore More Featured Collections
+        </Button>
+      </Center>
     </Container>
   );
 }

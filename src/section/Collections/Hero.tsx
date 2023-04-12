@@ -1,10 +1,12 @@
 import React from "react";
 import {
   ActionIcon,
+  Button,
   Container,
   createStyles,
   Overlay,
   rem,
+  Text,
   TextInput,
   Title,
 } from "@mantine/core";
@@ -15,8 +17,8 @@ const useStyles = createStyles((theme) => ({
     position: "relative",
   },
   bg: {
-    backgroundImage: `url(https://images.unsplash.com/photo-1575223970966-76ae61ee7838?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)`,
-    minHeight: rem(600),
+    backgroundImage: `url(https://images.unsplash.com/photo-1501380881752-df57c981dfc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)`,
+    minHeight: rem(650),
     /* Create the parallax scrolling effect */
     backgroundAttachment: "fixed",
     backgroundPosition: "center",
@@ -24,7 +26,7 @@ const useStyles = createStyles((theme) => ({
     backgroundSize: "cover",
   },
   container: {
-    height: rem(600),
+    height: rem(650),
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
@@ -58,6 +60,8 @@ const useStyles = createStyles((theme) => ({
   description: {
     color: theme.white,
     maxWidth: 600,
+    margin: `${theme.spacing.lg} 0`,
+    fontSize: theme.fontSizes.lg,
 
     [theme.fn.smallerThan("sm")]: {
       maxWidth: "100%",
@@ -78,26 +82,23 @@ export default function HeroSection() {
         />
         <Container className={classes.container}>
           <Title className={classes.title}>Explore the collection</Title>
+          <Text className={classes.description}>
+            Welcome to the new version of Collection online. Find out more about
+            ongoing improvements. For help and further information read our
+            online guide.
+          </Text>
           <TextInput
             icon={<IconSearch size="1.1rem" stroke={1.5} />}
-            radius="xl"
-            size="md"
+            radius="xs"
+            size="xl"
             rightSection={
-              <ActionIcon
-                size={32}
-                radius="xl"
-                color={theme.primaryColor}
-                variant="filled"
-              >
-                {theme.dir === "ltr" ? (
-                  <IconArrowRight size="1.1rem" stroke={1.5} />
-                ) : (
-                  <IconArrowLeft size="1.1rem" stroke={1.5} />
-                )}
-              </ActionIcon>
+              <Button leftIcon={<IconSearch />} size="md" variant="white">
+                Search
+              </Button>
             }
             placeholder="Enter a keyword, person, place"
-            rightSectionWidth={42}
+            rightSectionWidth={136}
+            sx={{ width: 720 }}
           />
         </Container>
       </div>
