@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
   },
   bg: {
     backgroundImage: `url(https://images.unsplash.com/photo-1674574124349-0928f4b2bce3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80)`,
-    minHeight: rem(600),
+    minHeight: rem(650),
     /* Create the parallax scrolling effect */
     backgroundAttachment: "fixed",
     backgroundPosition: "center",
@@ -23,7 +23,7 @@ const useStyles = createStyles((theme) => ({
     backgroundSize: "cover",
   },
   container: {
-    height: rem(600),
+    height: rem(650),
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",

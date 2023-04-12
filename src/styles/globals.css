@@ -15,7 +15,10 @@ body {
 
 .mantine-UnstyledButton-root,
 .mantine-Title-root,
-.mantine-Text-root {
+.mantine-Text-root,
+.mantine-List-itemWrapper,
+.mantine-Alert-message,
+.mantine-Accordion-content {
   font-family: "Poppins", sans-serif !important;
 }
 

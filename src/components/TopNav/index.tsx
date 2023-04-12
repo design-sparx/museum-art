@@ -121,7 +121,9 @@ export default function TopNav({ handleOpenSearch }: IProps) {
             >
               Search
             </Button>
-            <Button size="md">Donate</Button>
+            <Button size="md" component={Link} href="/donation">
+              Donate
+            </Button>
           </Group>
 
           <Burger
