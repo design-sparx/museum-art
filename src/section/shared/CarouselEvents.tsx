@@ -1,29 +1,19 @@
 import {
   ActionIcon,
   ActionIconProps,
-  Badge,
-  Box,
   Button,
   Center,
   Container,
   createStyles,
   Flex,
-  Image,
-  Paper,
   Progress,
   rem,
-  Spoiler,
-  Stack,
-  Text,
   Title,
 } from "@mantine/core";
 import { Carousel, Embla } from "@mantine/carousel";
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  IconArrowLeftBar,
-  IconArrowRightBar,
-  IconCalendarTime,
-} from "@tabler/icons-react";
+import { IconArrowLeftBar, IconArrowRightBar } from "@tabler/icons-react";
+import EventsCard from "@/components/EventsCard";
 
 const data = [
   {
@@ -135,35 +125,7 @@ export default function CarouselEventsSection({ title }: IProps) {
 
   const slides = data.map((item, i) => (
     <Carousel.Slide key={`item.title-${i}`}>
-      <Paper>
-        <Image
-          src={item.image}
-          alt={item.title}
-          height={360}
-          width="100%"
-          fit="cover"
-          radius="sm"
-        />
-        <Box py="md" px={0}>
-          <Stack align="start" spacing="xs">
-            <Badge size="lg" variant="filled" radius="xs">
-              {item.type} exhibition
-            </Badge>
-            <Text size="xl" weight={600} component="a" className={classes.link}>
-              {item.title}
-            </Text>
-            <Flex gap="xs" align="center">
-              <IconCalendarTime size={14} />
-              <Text size="sm" transform="capitalize">
-                {item.date}
-              </Text>
-            </Flex>
-            <Spoiler maxHeight={48} showLabel="Show more" hideLabel="Hide">
-              <Text>{item.description}</Text>
-            </Spoiler>
-          </Stack>
-        </Box>
-      </Paper>
+      <EventsCard item={item} />
     </Carousel.Slide>
   ));
 
@@ -212,7 +174,7 @@ export default function CarouselEventsSection({ title }: IProps) {
         {slides}
       </Carousel>
       <Center mt="xl">
-        <Button size="xl" variant="light">
+        <Button size="lg" variant="light">
           View all Upcoming Events
         </Button>
       </Center>

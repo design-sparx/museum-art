@@ -1,16 +1,14 @@
 import {
-  Badge,
-  Box,
   Button,
+  Center,
   Container,
   Flex,
-  Image,
-  Paper,
   SimpleGrid,
-  Text,
   Title,
 } from "@mantine/core";
 import React from "react";
+import EventsCard from "@/components/EventsCard";
+
 export default function EventsSection() {
   const data = [
     {
@@ -76,25 +74,21 @@ export default function EventsSection() {
   ];
 
   return (
-    <Container fluid>
-      <Flex>
-        <Title>Special Exhibitions</Title>
-        <Button>Browser all</Button>
+    <Container fluid pt={80} pb={120}>
+      <Flex mb="xl" align="center" justify="space-between">
+        <Title size={48}>Special Exhibitions</Title>
+        <Button variant="light">Browser all</Button>
       </Flex>
-      <SimpleGrid cols={3}>
-        {data.map((item, i) => (
-          <Paper key={`event-title-${i}`}>
-            <Image src={item.image} alt={item.title} height={400} fit="cover" />
-            <Box p="md">
-              <Badge>{item.type} exhibition</Badge>
-              <Text>{item.title}</Text>
-              <Text>{item.date}</Text>
-              <Text>{item.description}</Text>
-            </Box>
-          </Paper>
+      <SimpleGrid cols={3} spacing="lg">
+        {data.map((item) => (
+          <EventsCard item={item} key={`event-title${item.title}`} />
         ))}
       </SimpleGrid>
-      <Button>Load More</Button>
+      <Center>
+        <Button size="lg" variant="light">
+          Load More
+        </Button>
+      </Center>
     </Container>
   );
 }
