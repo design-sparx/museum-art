@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Wrapper from "@/layout";
+import { AnimatedBox, Wrapper } from "@/layout";
 import {
   CollectionsSection,
   FeaturesSection,
@@ -17,11 +17,19 @@ export default function Collections() {
       </Head>
       <Wrapper>
         <HeroSection />
-        <FeaturesSection />
-        <CollectionsSection />
-        <LinksSection />
+        <AnimatedBox>
+          <FeaturesSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <CollectionsSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <LinksSection />
+        </AnimatedBox>
         <DonationSection />
-        <SupportSection />
+        <AnimatedBox>
+          <SupportSection />
+        </AnimatedBox>
       </Wrapper>
     </>
   );

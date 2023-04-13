@@ -1,4 +1,4 @@
-import Wrapper from "@/layout";
+import { AnimatedBox, Wrapper } from "@/layout";
 import Head from "next/head";
 import { HeroSection, InfoSection, LinksSection } from "@/section/Support";
 import { SupportSection } from "@/section/shared";
@@ -11,9 +11,15 @@ export default function Support() {
       </Head>
       <Wrapper>
         <HeroSection />
-        <InfoSection />
-        <SupportSection />
-        <LinksSection />
+        <AnimatedBox>
+          <InfoSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <SupportSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <LinksSection />
+        </AnimatedBox>
       </Wrapper>
     </>
   );

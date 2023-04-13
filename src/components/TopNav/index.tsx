@@ -102,7 +102,7 @@ export default function TopNav({ handleOpenSearch }: IProps) {
     <Box>
       <Header height="100%" px="md" className={classes.header}>
         <Group position="apart" sx={{ height: "100%" }}>
-          <UnstyledButton>
+          <UnstyledButton component={Link} href="/">
             <Title order={2}>Museum & Art</Title>
           </UnstyledButton>
 

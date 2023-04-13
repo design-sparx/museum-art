@@ -11,6 +11,7 @@ import {
 } from "@mantine/core";
 import { IconCalendarTime } from "@tabler/icons-react";
 import React from "react";
+import { motion } from "framer-motion";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -31,12 +32,25 @@ interface IProps {
     description: string;
   };
 }
+
 const EventsCard = ({ item }: IProps) => {
   const { title, type, description, date, image } = item;
   const { classes } = useStyles();
 
   return (
-    <Paper key={`event-title-${title}`}>
+    <Paper
+      key={`event-title-${title}`}
+      component={motion.div}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+      }}
+      exit={{ opacity: 0 }}
+      viewport={{ once: true }}
+    >
       <Image src={image} alt={title} height={360} fit="cover" radius="sm" />
       <Box py="md" px={0}>
         <Stack align="start" spacing="xs">

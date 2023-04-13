@@ -1,4 +1,4 @@
-import Wrapper from "@/layout";
+import { AnimatedBox, Wrapper } from "@/layout";
 import Head from "next/head";
 import { FaqsSection, HeroSection, InfoSection } from "@/section/Donation";
 
@@ -10,8 +10,12 @@ export default function Donation() {
       </Head>
       <Wrapper>
         <HeroSection />
-        <InfoSection />
-        <FaqsSection />
+        <AnimatedBox>
+          <InfoSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <FaqsSection />
+        </AnimatedBox>
       </Wrapper>
     </>
   );

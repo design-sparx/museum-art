@@ -2,7 +2,7 @@ import { Alert, Anchor, Button, Container, Text, Title } from "@mantine/core";
 
 export default function InfoSection() {
   return (
-    <Container fluid pt={80} pb={120}>
+    <Container pt={80} pb={120}>
       <Title size={48} mb="xl" align="center">
         Your Donations Matter
       </Title>

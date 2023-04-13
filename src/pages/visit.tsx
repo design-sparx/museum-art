@@ -1,4 +1,4 @@
-import Wrapper from "@/layout";
+import { AnimatedBox, Wrapper } from "@/layout";
 import HeroSection from "@/section/Visit/Hero";
 import Head from "next/head";
 import WelcomeSection from "@/section/Visit/Welcome";
@@ -17,15 +17,31 @@ export default function Visit() {
         <title>Museum Art - Visit</title>
       </Head>
       <Wrapper>
-        <HeroSection />
-        <WelcomeSection />
-        <FeaturesSection />
+        <AnimatedBox>
+          <HeroSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <WelcomeSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <FeaturesSection />
+        </AnimatedBox>
         <DonationSection />
-        <CarouselEventsSection />
-        <SupportSection />
-        <AccessibilitySection />
-        <FacilitiesSection />
-        <FaqsSection />
+        <AnimatedBox>
+          <CarouselEventsSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <SupportSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <AccessibilitySection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <FacilitiesSection />
+        </AnimatedBox>
+        <AnimatedBox>
+          <FaqsSection />
+        </AnimatedBox>
       </Wrapper>
     </>
   );
