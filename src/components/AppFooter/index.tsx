@@ -1,6 +1,7 @@
 import {
   ActionIcon,
   ActionIconProps,
+  Anchor,
   Button,
   Container,
   createStyles,
@@ -140,7 +141,7 @@ export default function AppFooter({ data }: FooterLinksProps) {
 
   const actionIconProps: ActionIconProps = {
     size: "xl",
-    variant: "light",
+    variant: "filled",
     radius: "xl",
     color: "violet",
   };
@@ -207,7 +208,7 @@ export default function AppFooter({ data }: FooterLinksProps) {
       <Container fluid className={classes.container}>
         <SimpleGrid cols={4}>
           <Stack>
-            <Stack spacing="sm">
+            <Stack spacing="xs">
               <Flex gap="md" align="center">
                 <IconMap2 size={36} />
                 <Text size="lg" weight={500}>
@@ -218,7 +219,7 @@ export default function AppFooter({ data }: FooterLinksProps) {
               <Text>Nairobi, XYZ Building</Text>
               <Text>+254 000 000 000</Text>
             </Stack>
-            <Stack spacing="sm">
+            <Stack spacing="xs">
               <Flex gap="md" align="center">
                 <IconClock size={36} />
                 <Text size="lg" weight={500}>
@@ -236,21 +237,23 @@ export default function AppFooter({ data }: FooterLinksProps) {
       <Container fluid className={classes.container}>
         <Flex justify="space-between" align="center">
           <Flex gap="sm" justify="center" align="center">
-            <Button variant="subtle">Privacy Policy</Button>
-            <Button variant="subtle">Cookies</Button>
-            <Button variant="subtle">Terms of Use</Button>
+            <Anchor>Privacy Policy</Anchor>
+            <Anchor>Cookies</Anchor>
+            <Anchor>Terms of Use</Anchor>
           </Flex>
-          <Text>&copy;{new Date().getFullYear()} Art & History Museum</Text>
-          <Flex justify="center" align="center">
+          <Text>
+            &copy;{new Date().getFullYear()}&nbsp;Art & History Museum
+          </Text>
+          <Flex justify="center" align="center" gap="xs">
             <Text>Site created by:&nbsp;</Text>
-            <Button
+            <Anchor
               component="a"
               target="_blank"
               href="https://github.com/kelvink96"
               variant="subtle"
             >
               Kelvin
-            </Button>
+            </Anchor>
           </Flex>
         </Flex>
       </Container>

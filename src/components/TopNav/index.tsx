@@ -16,6 +16,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons-react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -23,8 +24,6 @@ const useStyles = createStyles((theme) => ({
     padding: `${theme.spacing.lg} ${theme.spacing.xl}`,
   },
   link: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-
     [theme.fn.smallerThan("sm")]: {
       height: rem(42),
       display: "flex",
@@ -39,7 +38,18 @@ const useStyles = createStyles((theme) => ({
           : theme.colors.gray[0],
     }),
   },
+  activeLink: {
+    borderRadius: 0,
+    borderBottom: `2px solid ${theme.colors.violet[7]}`,
 
+    ...theme.fn.hover({
+      borderRadius: theme.radius.sm,
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.gray[0],
+    }),
+  },
   hiddenMobile: {
     [theme.fn.smallerThan("sm")]: {
       display: "none",
@@ -79,7 +89,14 @@ interface IProps {
 export default function TopNav({ handleOpenSearch }: IProps) {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
-  const { classes, theme } = useStyles();
+  const { classes, cx, theme } = useStyles();
+  const router = useRouter();
+
+  const urlResolver = (url: string): boolean => {
+    return router.pathname.includes(url.toLowerCase());
+  };
+
+  console.log(router.pathname);
 
   const buttonProps: ButtonProps = {
     variant: "subtle",
@@ -88,7 +105,7 @@ export default function TopNav({ handleOpenSearch }: IProps) {
 
   const links = mockdata.map((item) => (
     <Button
-      className={classes.link}
+      className={urlResolver(item.label) ? classes.activeLink : classes.link}
       key={item.label}
       component={Link}
       href={item.link}
