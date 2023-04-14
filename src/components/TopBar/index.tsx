@@ -25,6 +25,11 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     padding: `${theme.spacing.sm} ${theme.spacing.xl}`,
     borderBottom: `1px solid ${theme.colors.gray[3]}`,
+
+    [theme.fn.smallerThan("sm")]: {
+      flexDirection: "column",
+      justifyContent: "center",
+    },
   },
 
   links: {
@@ -69,6 +74,20 @@ const useStyles = createStyles((theme) => ({
     color: theme.black,
     textAlign: "center",
     padding: rem(8),
+
+    [theme.fn.smallerThan("sm")]: {},
+  },
+
+  hiddenMobile: {
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  leftSection: {
+    [theme.fn.smallerThan("sm")]: {
+      justifyContent: "center",
+    },
   },
 }));
 
@@ -89,11 +108,11 @@ export default function TopBar() {
   return (
     <Header height="100%" sx={{ borderBottom: 0 }}>
       <Container className={classes.inner} fluid>
-        <Group spacing="xs" className={classes.links}>
+        <Group spacing="xs" className={classes.leftSection}>
           <Text size="sm" weight={600}>
             OPEN TODAY AT 12 P.M.
           </Text>
-          <Divider orientation="vertical" />
+          <Divider orientation="vertical" className={classes.hiddenMobile} />
           <Carousel
             slideSize="100%"
             mx="auto"
@@ -119,7 +138,7 @@ export default function TopBar() {
             ))}
           </Carousel>
         </Group>
-        <Group spacing="sm">
+        <Group spacing="sm" className={classes.hiddenMobile}>
           <Button {...buttonProps}>Join & Give</Button>
           <Button {...buttonProps}>Museum Shop</Button>
           <LanguagePicker />

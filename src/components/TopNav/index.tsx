@@ -10,6 +10,8 @@ import {
   Header,
   rem,
   ScrollArea,
+  Stack,
+  Text,
   Title,
   UnstyledButton,
 } from "@mantine/core";
@@ -17,19 +19,16 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import React from "react";
 
 const useStyles = createStyles((theme) => ({
   header: {
     border: "none",
     padding: `${theme.spacing.lg} ${theme.spacing.xl}`,
   },
+
   link: {
-    [theme.fn.smallerThan("sm")]: {
-      height: rem(42),
-      display: "flex",
-      alignItems: "center",
-      width: "100%",
-    },
+    [theme.fn.smallerThan("sm")]: {},
 
     ...theme.fn.hover({
       backgroundColor:
@@ -49,6 +48,11 @@ const useStyles = createStyles((theme) => ({
           ? theme.colors.dark[6]
           : theme.colors.gray[0],
     }),
+
+    [theme.fn.smallerThan("sm")]: {
+      backgroundColor: theme.colors.violet[7],
+      color: theme.white,
+    },
   },
   hiddenMobile: {
     [theme.fn.smallerThan("sm")]: {
@@ -156,7 +160,7 @@ export default function TopNav({ handleOpenSearch }: IProps) {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Navigation"
+        title="Museum & Art"
         className={classes.hiddenDesktop}
         zIndex={1000000}
       >
@@ -165,7 +169,15 @@ export default function TopNav({ handleOpenSearch }: IProps) {
             my="sm"
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
-          {links}
+          <Stack spacing={2} px="sm" mb="sm">
+            {links}
+            <Button variant="subtle">Join & Give</Button>
+            <Button variant="subtle">Museum Shop</Button>
+          </Stack>
+          <Divider
+            my="sm"
+            color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
+          />{" "}
           <Group position="center" grow pb="xl" px="md">
             <Button variant="default">Log in</Button>
             <Button>Sign up</Button>

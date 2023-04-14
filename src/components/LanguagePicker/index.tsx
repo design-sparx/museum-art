@@ -44,16 +44,8 @@ const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
     alignItems: "center",
     padding: `.4rem 1rem`,
     borderRadius: theme.radius.sm,
-    border: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[3]
-    }`,
     transition: "background-color 150ms ease",
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[opened ? 5 : 6]
-        : opened
-        ? theme.colors.gray[0]
-        : theme.colors.gray[0],
+    color: theme.colors.violet[7],
 
     "&:hover": {
       backgroundColor:
@@ -64,7 +56,7 @@ const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
   },
 
   label: {
-    fontWeight: 500,
+    fontWeight: 600,
     fontSize: theme.fontSizes.sm,
   },
 
