@@ -36,6 +36,11 @@ const useStyles = createStyles((theme) => ({
     marginTop: rem(-320),
     paddingBottom: rem(96),
 
+    [theme.fn.smallerThan("md")]: {
+      minHeight: rem(500),
+      marginTop: rem(-400),
+      paddingBottom: 0,
+    },
     [theme.fn.smallerThan("sm")]: {
       minHeight: rem(500),
       marginTop: rem(-480),
@@ -73,7 +78,7 @@ export default function HeroSection() {
       </video>
       <Container className={classes.content}>
         <Stack align="center" justify="end" pb="xl" sx={{ height: "100%" }}>
-          <Paper p="md" shadow="md">
+          <Paper p={smallerThan ? "md" : "lg"} shadow="md">
             <Text
               size={smallerThan ? 24 : 36}
               weight={600}

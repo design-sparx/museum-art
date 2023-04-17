@@ -18,7 +18,8 @@ body {
 .mantine-Text-root,
 .mantine-List-itemWrapper,
 .mantine-Alert-message,
-.mantine-Accordion-content {
+.mantine-Accordion-content,
+.mantine-Menu-itemLabel {
   font-family: "Poppins", sans-serif !important;
 }
 

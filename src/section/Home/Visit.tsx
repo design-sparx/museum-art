@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Box,
   Button,
   Container,
   Image,
@@ -7,6 +8,7 @@ import {
   SimpleGrid,
   Text,
   Title,
+  useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -32,6 +34,7 @@ const data = [
 ];
 
 export default function VisitSection() {
+  const theme = useMantineTheme();
   const smallerThan = useMediaQuery("(max-width: 600px)");
 
   return (
@@ -46,21 +49,25 @@ export default function VisitSection() {
         cols={3}
         spacing="lg"
         breakpoints={[
-          { maxWidth: "md", cols: 3, spacing: "md" },
-          { maxWidth: "sm", cols: 2, spacing: "sm" },
-          { maxWidth: "xs", cols: 1, spacing: "sm" },
+          { maxWidth: "md", cols: 1, spacing: "md" },
+          { maxWidth: "sm", cols: 1, spacing: "sm" },
         ]}
       >
         {data.map((item, i) => (
-          <Paper key={`visit-item-${i}`}>
+          <Paper
+            key={`visit-item-${i}`}
+            sx={{ backgroundColor: theme.colors.violet[0] }}
+          >
             <Image src={item.image} alt={item.title} height={320} radius="sm" />
-            <Text size="xl" weight={600} pt="md">
-              {item.title}
-            </Text>
-            <Text my="sm">{item.text}</Text>
-            <Button variant="light" fullWidth={smallerThan}>
-              Learn More
-            </Button>
+            <Box p="md">
+              <Text size="xl" weight={600} pt="md">
+                {item.title}
+              </Text>
+              <Text my="sm">{item.text}</Text>
+              <Button variant="outline" fullWidth={smallerThan}>
+                Learn More
+              </Button>
+            </Box>
           </Paper>
         ))}
       </SimpleGrid>

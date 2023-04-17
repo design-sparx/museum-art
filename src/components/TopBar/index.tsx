@@ -14,6 +14,7 @@ import { Carousel } from "@mantine/carousel";
 import React, { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import LanguagePicker from "@/components/LanguagePicker";
+import { useMediaQuery } from "@mantine/hooks";
 
 const { Slide } = Carousel;
 
@@ -23,8 +24,13 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: `${theme.spacing.sm} ${theme.spacing.xl}`,
+    flexWrap: "nowrap",
+    padding: `${theme.spacing.xs} ${theme.spacing.xl}`,
     borderBottom: `1px solid ${theme.colors.gray[3]}`,
+
+    [theme.fn.smallerThan("md")]: {
+      justifyContent: "space-between",
+    },
 
     [theme.fn.smallerThan("sm")]: {
       flexDirection: "column",
@@ -78,13 +84,18 @@ const useStyles = createStyles((theme) => ({
     [theme.fn.smallerThan("sm")]: {},
   },
 
-  hiddenMobile: {
-    [theme.fn.smallerThan("sm")]: {
+  hiddenTablet: {
+    [theme.fn.smallerThan("md")]: {
       display: "none",
     },
   },
 
   leftSection: {
+    justifyContent: "space-between",
+
+    [theme.fn.smallerThan("md")]: {
+      width: "100%",
+    },
     [theme.fn.smallerThan("sm")]: {
       justifyContent: "center",
     },
@@ -100,6 +111,7 @@ const announcementsData = [
 export default function TopBar() {
   const { classes } = useStyles();
   const autoplay = useRef(Autoplay({ delay: 15000 }));
+  const smallerThan = useMediaQuery("(max-width: 769px)");
 
   const buttonProps: ButtonProps = {
     variant: "subtle",
@@ -108,14 +120,13 @@ export default function TopBar() {
   return (
     <Header height="100%" sx={{ borderBottom: 0 }}>
       <Container className={classes.inner} fluid>
-        <Group spacing="xs" className={classes.leftSection}>
+        <Group spacing="sm" className={classes.leftSection}>
           <Text size="sm" weight={600}>
             OPEN TODAY AT 12 P.M.
           </Text>
-          <Divider orientation="vertical" className={classes.hiddenMobile} />
+          <Divider orientation="vertical" className={classes.hiddenTablet} />
           <Carousel
             slideSize="100%"
-            mx="auto"
             align="start"
             withIndicators={false}
             loop={true}
@@ -138,7 +149,7 @@ export default function TopBar() {
             ))}
           </Carousel>
         </Group>
-        <Group spacing="sm" className={classes.hiddenMobile}>
+        <Group spacing="sm" className={classes.hiddenTablet}>
           <Button {...buttonProps}>Join & Give</Button>
           <Button {...buttonProps}>Museum Shop</Button>
           <LanguagePicker />

@@ -28,13 +28,13 @@ export default function Wrapper({ children }: IProps) {
           top: 0,
           zIndex: 2,
           width: "100%",
-          boxShadow: theme.shadows.md,
+          boxShadow: theme.shadows.sm,
         }}
       >
         <TopBar />
         <TopNav handleOpenSearch={open} />
       </Box>
-      <Box sx={{ marginTop: rem(140) }}>{children}</Box>
+      <Box sx={{ marginTop: rem(104) }}>{children}</Box>
       <AppFooter data={FooterData.data} />
       <SearchModal opened={opened} close={close} />
     </motion.div>

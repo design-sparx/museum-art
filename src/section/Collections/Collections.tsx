@@ -9,6 +9,7 @@ import {
   Stack,
   Text,
   Title,
+  useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -65,26 +66,30 @@ const data = [
   },
 ];
 export default function Collections() {
+  const theme = useMantineTheme();
   const smallerThan = useMediaQuery("(max-width: 600px)");
 
   const items = data.map((d, i) => (
-    <Paper key={`collection-item-${i}`} p={smallerThan ? 0 : "md"}>
+    <Paper
+      key={`collection-item-${i}`}
+      p={smallerThan ? 0 : "md"}
+      sx={{ backgroundColor: theme.colors.violet[0] }}
+    >
       <Grid gutter="md" sx={{ alignItems: "center" }}>
         <Col lg={4}>
           <Image src={d.image} alt={d.title} height={240} radius="sm" mb="sm" />
-          <Text align="center" italic>
+          <Text align="center" italic size="sm">
             {d.imageDescription}
           </Text>
         </Col>
         <Col lg={8}>
           <Title order={3}>{d.title}</Title>
           <Text my="md">{d.description}</Text>
-          <Button size="md" variant="light" fullWidth={smallerThan}>
+          <Button variant="outline" fullWidth={smallerThan}>
             Explore
           </Button>
         </Col>
       </Grid>
-      <Divider mt="sm" />
     </Paper>
   ));
 

@@ -165,7 +165,10 @@ export default function CarouselEventsSection({ title }: IProps) {
       />
       <Carousel
         slideSize="33%"
-        breakpoints={[{ maxWidth: "sm", slideSize: "100%", slideGap: rem(2) }]}
+        breakpoints={[
+          { maxWidth: "md", slideSize: "50%" },
+          { maxWidth: "sm", slideSize: "100%", slideGap: rem(2) },
+        ]}
         slideGap="md"
         align="start"
         slidesToScroll={1}

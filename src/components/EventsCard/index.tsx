@@ -41,11 +41,12 @@ interface IProps {
 
 const EventsCard = ({ item }: IProps) => {
   const { title, type, description, date, image } = item;
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
 
   const buttonProps: ButtonProps = {
     mt: "xs",
-    variant: "light",
+    variant: "outline",
+    compact: true,
   };
 
   return (
@@ -61,9 +62,10 @@ const EventsCard = ({ item }: IProps) => {
       }}
       exit={{ opacity: 0 }}
       viewport={{ once: true }}
+      sx={{ backgroundColor: theme.colors.violet[0], height: "100%" }}
     >
-      <Image src={image} alt={title} height={360} fit="cover" radius="sm" />
-      <Box py="md" px={0}>
+      <Image src={image} alt={title} height={320} fit="cover" radius="sm" />
+      <Box p="md">
         <Stack align="start" spacing="xs">
           <Badge size="lg" variant="filled" radius="xs">
             {type} exhibition

@@ -23,7 +23,7 @@ import React from "react";
 const useStyles = createStyles((theme) => ({
   header: {
     border: "none",
-    padding: `${theme.spacing.lg} ${theme.spacing.xl}`,
+    padding: `${theme.spacing.sm} ${theme.spacing.xl}`,
   },
   link: {
     [theme.fn.smallerThan("sm")]: {},
@@ -36,7 +36,7 @@ const useStyles = createStyles((theme) => ({
     }),
   },
   activeLink: {
-    borderRadius: 0,
+    backgroundColor: theme.colors.violet[0],
     borderBottom: `2px solid ${theme.colors.violet[7]}`,
 
     ...theme.fn.hover({
@@ -47,8 +47,7 @@ const useStyles = createStyles((theme) => ({
           : theme.colors.gray[0],
     }),
 
-    [theme.fn.smallerThan("sm")]: {
-      backgroundColor: theme.colors.violet[0],
+    [theme.fn.smallerThan("md")]: {
       color: theme.colors.violet[8],
     },
   },
@@ -57,8 +56,13 @@ const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
+  hiddenTablet: {
+    [theme.fn.smallerThan("md")]: {
+      display: "none",
+    },
+  },
   hiddenDesktop: {
-    [theme.fn.largerThan("sm")]: {
+    [theme.fn.largerThan("md")]: {
       display: "none",
     },
   },
@@ -78,7 +82,7 @@ const mockdata = [
     link: "/collections",
   },
   {
-    label: "Support Us",
+    label: "Support",
     link: "/support",
   },
 ];
@@ -125,7 +129,7 @@ export default function TopNav({ handleOpenSearch }: IProps) {
           <Group
             sx={{ height: "100%" }}
             spacing="xs"
-            className={classes.hiddenMobile}
+            className={classes.hiddenTablet}
           >
             {links}
             <Button

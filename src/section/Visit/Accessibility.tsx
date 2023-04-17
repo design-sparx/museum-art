@@ -13,7 +13,7 @@ export default function AccessibilitySection() {
   const smallerThan = useMediaQuery("(max-width: 600px)");
 
   return (
-    <Container fluid pt={80} pb={120}>
+    <Container pt={80} pb={120}>
       <SimpleGrid
         cols={2}
         spacing="lg"

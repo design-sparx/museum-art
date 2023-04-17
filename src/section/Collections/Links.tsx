@@ -22,8 +22,9 @@ const useStyles = createStyles((theme) => ({
 
     "&:hover, &:focus": {
       border: `1px solid ${theme.colors.violet[7]}`,
+      color: theme.colors.violet[7],
       cursor: "pointer",
-      transition: "all ease-in 200ms",
+      transition: "all ease-in 150ms",
       transform: "scale(1.03)",
     },
   },

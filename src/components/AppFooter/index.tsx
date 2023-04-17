@@ -10,6 +10,7 @@ import {
   rem,
   SimpleGrid,
   Stack,
+  StackProps,
   Text,
   TextInput,
   Title,
@@ -138,14 +139,23 @@ interface FooterLinksProps {
 }
 
 export default function AppFooter({ data }: FooterLinksProps) {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   const smallerThan = useMediaQuery("(max-width: 600px)");
 
   const actionIconProps: ActionIconProps = {
-    size: "xl",
+    size: smallerThan ? "lg" : "xl",
     variant: "filled",
     radius: "xl",
     color: "violet",
+  };
+
+  const stackProps: StackProps = {
+    p: theme.spacing.md,
+    spacing: 6,
+    sx: {
+      backgroundColor: theme.colors.gray[2],
+      borderRadius: theme.radius.sm,
+    },
   };
 
   const groups = data.map((group) => {
@@ -200,10 +210,10 @@ export default function AppFooter({ data }: FooterLinksProps) {
             </Flex>
           </Stack>
           <Stack spacing="sm" mt={smallerThan ? "md" : 0}>
-            <Text size="lg">
+            <Text size={smallerThan ? "md" : "lg"}>
               Enter your email address to receive our newsletter
             </Text>
-            <Flex gap="xs">
+            <Flex gap={smallerThan ? "sm" : "md"}>
               <TextInput size="md" sx={{ flexGrow: 1 }} />
               <Button size="md" variant="filled">
                 Signup
@@ -216,16 +226,16 @@ export default function AppFooter({ data }: FooterLinksProps) {
       <Container fluid className={classes.container}>
         <SimpleGrid
           cols={4}
+          spacing="lg"
           breakpoints={[
-            { maxWidth: "md", cols: 3, spacing: "md" },
-            { maxWidth: "sm", cols: 2, spacing: "sm" },
-            { maxWidth: "xs", cols: 1, spacing: "sm" },
+            { maxWidth: "md", cols: 2, spacing: "md" },
+            { maxWidth: "sm", cols: 1, spacing: "sm" },
           ]}
         >
           <Stack>
-            <Stack spacing="xs">
+            <Stack {...stackProps}>
               <Flex gap="md" align="center">
-                <IconMap2 size={36} />
+                <IconMap2 size={24} />
                 <Text size="lg" weight={500}>
                   Where You Visit
                 </Text>
@@ -234,9 +244,9 @@ export default function AppFooter({ data }: FooterLinksProps) {
               <Text>Nairobi, XYZ Building</Text>
               <Text>+254 000 000 000</Text>
             </Stack>
-            <Stack spacing="xs">
+            <Stack {...stackProps}>
               <Flex gap="md" align="center">
-                <IconClock size={36} />
+                <IconClock size={24} />
                 <Text size="lg" weight={500}>
                   Opening Times
                 </Text>
@@ -253,7 +263,7 @@ export default function AppFooter({ data }: FooterLinksProps) {
         <Flex
           justify="space-between"
           align="center"
-          direction={{ base: "column", sm: "row" }}
+          direction={{ base: "column", md: "row" }}
           gap={{ base: "sm", sm: "lg" }}
         >
           <Flex gap="sm" justify="center" align="center">

@@ -18,6 +18,8 @@ import { useMediaQuery } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   card: {
+    backgroundColor: theme.colors.violet[0],
+
     "&:hover, &:focus": {
       transition: "all ease 200ms",
     },
@@ -29,7 +31,7 @@ export default function DiscoverSection() {
   const smallerThan = useMediaQuery("(max-width: 600px)");
 
   const buttonProps: ButtonProps = {
-    variant: "light",
+    variant: "outline",
     fullWidth: smallerThan,
   };
 
@@ -41,9 +43,9 @@ export default function DiscoverSection() {
         </Title>
         <Text size="lg">Get Latest Updates and News</Text>
       </Box>
-      <Paper>
+      <Paper className={classes.card} p={smallerThan ? 8 : 6}>
         <Grid sx={{ alignItems: "center" }}>
-          <Grid.Col lg={6}>
+          <Grid.Col lg={6} p={0}>
             <Image
               src="https://images.unsplash.com/photo-1610494940231-a07875fb25fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
               alt=""
@@ -52,8 +54,8 @@ export default function DiscoverSection() {
               radius="sm"
             />
           </Grid.Col>
-          <Grid.Col lg={6}>
-            <Stack align="start">
+          <Grid.Col lg={6} p={0}>
+            <Stack align="start" p={smallerThan ? "md" : "lg"}>
               <Title size={24}>Lorem ipsum dolor sit amet</Title>
               <Text>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -85,15 +87,15 @@ export default function DiscoverSection() {
       {!smallerThan && <Divider my="xl" />}
       <SimpleGrid
         cols={4}
-        mt="lg"
+        mt="xl"
         breakpoints={[
-          { maxWidth: "md", cols: 3, spacing: "md" },
-          { maxWidth: "sm", cols: 2, spacing: "sm" },
-          { maxWidth: "xs", cols: 1, spacing: "sm" },
+          { maxWidth: "lg", cols: 2, spacing: "lg" },
+          { maxWidth: "md", cols: 1, spacing: "md" },
+          { maxWidth: "sm", cols: 1, spacing: "sm" },
         ]}
       >
         {Array.from({ length: 4 }).map((_, i) => (
-          <Paper key={`news-item-${i}`} className={classes.card}>
+          <Paper key={`news-item-${i}`} className={classes.card} p="md">
             <Text size="lg" weight={600} mb="md">
               Lorem ipsum dolor sit amet
             </Text>

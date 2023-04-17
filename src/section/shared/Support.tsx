@@ -25,7 +25,7 @@ export default function SupportSection() {
   const smallerThan = useMediaQuery("(max-width: 600px)");
 
   return (
-    <Container fluid pt={80} pb={120} sx={{ overflow: "hidden" }}>
+    <Container pt={80} pb={120} sx={{ overflow: "hidden" }}>
       <Box mb="xl" sx={{ textAlign: "center" }}>
         <Title size={smallerThan ? 32 : 48} mb="md">
           Support the Museum
@@ -35,9 +35,8 @@ export default function SupportSection() {
       <SimpleGrid
         cols={3}
         breakpoints={[
-          { maxWidth: "md", cols: 3, spacing: "md" },
-          { maxWidth: "sm", cols: 2, spacing: "sm" },
-          { maxWidth: "xs", cols: 1, spacing: "sm" },
+          { maxWidth: "md", cols: 1, spacing: "md" },
+          { maxWidth: "sm", cols: 1, spacing: "sm" },
         ]}
       >
         <Paper p="md" className={classes.card}>

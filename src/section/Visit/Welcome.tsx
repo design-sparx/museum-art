@@ -24,7 +24,7 @@ export default function WelcomeSection() {
     withBorder: true,
     p: "lg",
     sx: {
-      backgroundColor: theme.colors.gray[0],
+      backgroundColor: theme.colors.violet[0],
     },
   };
 

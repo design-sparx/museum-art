@@ -1,10 +1,12 @@
 import {
+  Box,
   Container,
   Image,
   Paper,
   SimpleGrid,
   Text,
   Title,
+  useMantineTheme,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -33,6 +35,7 @@ const data = [
 ];
 
 export default function FeaturesSection() {
+  const theme = useMantineTheme();
   const smallerThan = useMediaQuery("(max-width: 600px)");
 
   return (
@@ -44,18 +47,22 @@ export default function FeaturesSection() {
         cols={3}
         spacing="md"
         breakpoints={[
-          { maxWidth: "md", cols: 3, spacing: "md" },
-          { maxWidth: "sm", cols: 2, spacing: "sm" },
-          { maxWidth: "xs", cols: 1, spacing: "sm" },
+          { maxWidth: "md", cols: 1, spacing: "md" },
+          { maxWidth: "sm", cols: 1, spacing: "sm" },
         ]}
       >
         {data.map((d, i) => (
-          <Paper key={`visit-feature-${i}`}>
+          <Paper
+            key={`visit-feature-${i}`}
+            sx={{ backgroundColor: theme.colors.violet[0] }}
+          >
             <Image src={d.image} alt={d.title} height={360} radius="sm" />
-            <Title order={3} my="md">
-              {d.title}
-            </Title>
-            <Text>{d.description}</Text>
+            <Box p="md">
+              <Title order={3} mb="md">
+                {d.title}
+              </Title>
+              <Text>{d.description}</Text>
+            </Box>
           </Paper>
         ))}
       </SimpleGrid>

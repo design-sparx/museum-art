@@ -37,7 +37,7 @@ export default function InfoSection() {
         The world&apos;s leading museum of art
       </Title>
       <Grid>
-        <Col lg={7}>
+        <Col md={6} lg={7}>
           <Image
             src="https://images.unsplash.com/photo-1513038630932-13873b1a7f29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
             alt=""
@@ -46,7 +46,7 @@ export default function InfoSection() {
             radius="sm"
           />
         </Col>
-        <Col lg={5}>
+        <Col md={6} lg={5}>
           <Stack>
             <Paper className={classes.card}>
               <Flex gap="md">

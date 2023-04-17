@@ -38,7 +38,6 @@ const data = [
 
 const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
   control: {
-    width: 200,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
