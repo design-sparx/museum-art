@@ -12,11 +12,14 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import React from "react";
+import { useMediaQuery } from "@mantine/hooks";
 
 const { Item } = List;
 
 export default function WelcomeSection() {
   const theme = useMantineTheme();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   const paperProps: PaperProps = {
     withBorder: true,
     p: "lg",
@@ -142,8 +145,10 @@ export default function WelcomeSection() {
           visit.
         </Text>
         <Text>We look forward to welcoming you.</Text>
-        <Center>
-          <Button size="lg">Get Tickets</Button>
+        <Center mt={smallerThan ? 16 : "xl"}>
+          <Button size="lg" fullWidth={smallerThan}>
+            Get Tickets
+          </Button>
         </Center>
       </Stack>
     </Container>

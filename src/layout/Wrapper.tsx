@@ -28,7 +28,7 @@ export default function Wrapper({ children }: IProps) {
           top: 0,
           zIndex: 2,
           width: "100%",
-          boxShadow: theme.shadows.lg,
+          boxShadow: theme.shadows.md,
         }}
       >
         <TopBar />

@@ -6,6 +6,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 const data = [
   "donate",
@@ -31,6 +32,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function LinksSection() {
   const { classes } = useStyles();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
 
   const items = data.map((d) => (
     <Paper key={`support-links-${d}`} px="sm" py="xl" className={classes.card}>
@@ -42,10 +44,17 @@ export default function LinksSection() {
 
   return (
     <Container pt={80} pb={120}>
-      <Title size={48} mb="xl" align="center">
+      <Title size={smallerThan ? 32 : 48} mb="xl" align="center">
         More ways to support us
       </Title>
-      <SimpleGrid cols={3} spacing="lg">
+      <SimpleGrid
+        cols={3}
+        spacing="lg"
+        breakpoints={[
+          { maxWidth: "md", cols: 3, spacing: "md" },
+          { maxWidth: "sm", cols: 1, spacing: "sm" },
+        ]}
+      >
         {items}
       </SimpleGrid>
     </Container>

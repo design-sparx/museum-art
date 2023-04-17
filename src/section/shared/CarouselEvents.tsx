@@ -14,6 +14,7 @@ import { Carousel, Embla } from "@mantine/carousel";
 import React, { useCallback, useEffect, useState } from "react";
 import { IconArrowLeftBar, IconArrowRightBar } from "@tabler/icons-react";
 import EventsCard from "@/components/EventsCard";
+import { useMediaQuery } from "@mantine/hooks";
 
 const data = [
   {
@@ -94,7 +95,7 @@ interface IProps {
 export default function CarouselEventsSection({ title }: IProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [embla, setEmbla] = useState<Embla | null>(null);
-  const { classes } = useStyles();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
 
   const actionIconProps: ActionIconProps = {
     size: "xl",
@@ -131,8 +132,10 @@ export default function CarouselEventsSection({ title }: IProps) {
 
   return (
     <Container fluid pt={80} pb={120} sx={{ overflow: "hidden" }}>
-      <Flex justify="space-between" align="center">
-        <Title size={48}>{title ?? "Exhibitions and events"}</Title>
+      <Flex justify="space-between" align={smallerThan ? "flex-end" : "center"}>
+        <Title size={smallerThan ? 32 : 48}>
+          {title ?? "Exhibitions and events"}
+        </Title>
         <Flex gap="md">
           <ActionIcon
             onClick={handlePrevious}
@@ -173,8 +176,8 @@ export default function CarouselEventsSection({ title }: IProps) {
       >
         {slides}
       </Carousel>
-      <Center mt="xl">
-        <Button size="lg" variant="light">
+      <Center mt={smallerThan ? 36 : "xl"}>
+        <Button size="lg" variant="light" fullWidth={smallerThan}>
           View all Upcoming Events
         </Button>
       </Center>

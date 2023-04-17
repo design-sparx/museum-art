@@ -2,6 +2,7 @@ import {
   Button,
   ButtonProps,
   Container,
+  createStyles,
   Paper,
   PaperProps,
   SimpleGrid,
@@ -9,20 +10,45 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+
+const useStyles = createStyles((theme) => ({
+  card: {
+    backgroundColor: theme.colors.violet[8],
+    color: theme.white,
+
+    "&:hover, &:focus": {
+      cursor: "pointer",
+    },
+  },
+}));
 
 export default function FeaturesSection() {
+  const { classes } = useStyles();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   const buttonProps: ButtonProps = {
-    variant: "light",
-    size: "md",
+    variant: "white",
+    size: "sm",
+    fullWidth: smallerThan,
   };
 
   const paperProps: PaperProps = {
     p: "md",
+    className: classes.card,
   };
 
   return (
     <Container fluid pt={80} pb={120}>
-      <SimpleGrid cols={3} spacing="lg">
+      <SimpleGrid
+        cols={3}
+        spacing="lg"
+        breakpoints={[
+          { maxWidth: "md", cols: 3, spacing: "md" },
+          { maxWidth: "sm", cols: 2, spacing: "sm" },
+          { maxWidth: "xs", cols: 1, spacing: "sm" },
+        ]}
+      >
         <Paper {...paperProps}>
           <Stack align="start">
             <Title order={3}>Reference Materials</Title>

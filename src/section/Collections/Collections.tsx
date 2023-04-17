@@ -10,6 +10,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 const { Col } = Grid;
 
@@ -64,35 +65,37 @@ const data = [
   },
 ];
 export default function Collections() {
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   const items = data.map((d, i) => (
-    <Paper key={`collection-item-${i}`} p="md">
+    <Paper key={`collection-item-${i}`} p={smallerThan ? 0 : "md"}>
       <Grid gutter="md" sx={{ alignItems: "center" }}>
-        <Col lg={3}>
+        <Col lg={4}>
           <Image src={d.image} alt={d.title} height={240} radius="sm" mb="sm" />
           <Text align="center" italic>
             {d.imageDescription}
           </Text>
         </Col>
-        <Col lg={9}>
+        <Col lg={8}>
           <Title order={3}>{d.title}</Title>
           <Text my="md">{d.description}</Text>
-          <Button size="md" variant="light">
+          <Button size="md" variant="light" fullWidth={smallerThan}>
             Explore
           </Button>
         </Col>
       </Grid>
-      <Divider mt="sm" variant="dotted" />
+      <Divider mt="sm" />
     </Paper>
   ));
 
   return (
-    <Container fluid pt={80} pb={120}>
-      <Title size={48} mb="xl">
+    <Container pt={80} pb={120}>
+      <Title size={smallerThan ? 32 : 48} mb="xl">
         Featured Collections
       </Title>
       <Stack>{items}</Stack>
-      <Center>
-        <Button size="lg" variant="light">
+      <Center mt={smallerThan ? 36 : "xl"}>
+        <Button size="lg" variant="light" fullWidth={smallerThan}>
           Explore More Featured Collections
         </Button>
       </Center>

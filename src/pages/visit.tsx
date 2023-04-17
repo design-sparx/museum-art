@@ -17,9 +17,7 @@ export default function Visit() {
         <title>Museum Art - Visit</title>
       </Head>
       <Wrapper>
-        <AnimatedBox>
-          <HeroSection />
-        </AnimatedBox>
+        <HeroSection />
         <AnimatedBox>
           <WelcomeSection />
         </AnimatedBox>

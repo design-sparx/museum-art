@@ -21,6 +21,10 @@ const useStyles = createStyles((theme) => ({
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+
+    [theme.fn.smallerThan("sm")]: {
+      minHeight: rem(500),
+    },
   },
   container: {
     height: rem(600),

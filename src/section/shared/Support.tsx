@@ -7,33 +7,39 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor: theme.colors.violet[6],
+    backgroundColor: theme.colors.violet[8],
     color: theme.white,
 
     "&:hover, &:focus": {
-      backgroundColor: theme.colors.violet[8],
       cursor: "pointer",
-      transform: "scale(1.03)",
-      transitionDuration: "200ms",
     },
   },
 }));
 
 export default function SupportSection() {
   const { classes } = useStyles();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
 
   return (
     <Container fluid pt={80} pb={120} sx={{ overflow: "hidden" }}>
       <Box mb="xl" sx={{ textAlign: "center" }}>
-        <Title size={48} mb="md">
+        <Title size={smallerThan ? 32 : 48} mb="md">
           Support the Museum
         </Title>
         <Text size="lg">Join today and Enjoy unlimited</Text>
       </Box>
-      <SimpleGrid cols={3}>
+      <SimpleGrid
+        cols={3}
+        breakpoints={[
+          { maxWidth: "md", cols: 3, spacing: "md" },
+          { maxWidth: "sm", cols: 2, spacing: "sm" },
+          { maxWidth: "xs", cols: 1, spacing: "sm" },
+        ]}
+      >
         <Paper p="md" className={classes.card}>
           <Text size="xl" weight={600} mb="sm">
             Become a member

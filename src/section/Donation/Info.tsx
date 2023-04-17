@@ -1,9 +1,12 @@
 import { Alert, Anchor, Button, Container, Text, Title } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function InfoSection() {
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   return (
     <Container pt={80} pb={120}>
-      <Title size={48} mb="xl" align="center">
+      <Title size={smallerThan ? 32 : 48} mb="xl" align="center">
         Your Donations Matter
       </Title>
       <Text mb="md">
@@ -18,7 +21,7 @@ export default function InfoSection() {
         The Museum is a non-profit organization. Your donation to Museum is 100%
         tax-deductible.
       </Text>
-      <Button size="md" mb="lg">
+      <Button size="md" my={smallerThan ? "xl" : "lg"} fullWidth={smallerThan}>
         Donate now
       </Button>
       <Alert>

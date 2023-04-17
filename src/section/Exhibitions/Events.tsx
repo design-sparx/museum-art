@@ -8,8 +8,11 @@ import {
 } from "@mantine/core";
 import React from "react";
 import EventsCard from "@/components/EventsCard";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function EventsSection() {
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   const data = [
     {
       image:
@@ -76,16 +79,24 @@ export default function EventsSection() {
   return (
     <Container fluid pt={80} pb={120}>
       <Flex mb="xl" align="center" justify="space-between">
-        <Title size={48}>Special Exhibitions</Title>
+        <Title size={smallerThan ? 32 : 48}>Special Exhibitions</Title>
         <Button variant="light">Browser all</Button>
       </Flex>
-      <SimpleGrid cols={3} spacing="lg">
+      <SimpleGrid
+        cols={3}
+        spacing="lg"
+        breakpoints={[
+          { maxWidth: "md", cols: 3, spacing: "md" },
+          { maxWidth: "sm", cols: 2, spacing: "sm" },
+          { maxWidth: "xs", cols: 1, spacing: "sm" },
+        ]}
+      >
         {data.map((item) => (
           <EventsCard item={item} key={`event-title${item.title}`} />
         ))}
       </SimpleGrid>
-      <Center>
-        <Button size="lg" variant="light">
+      <Center mt={smallerThan ? 36 : "xl"}>
+        <Button size="lg" variant="light" fullWidth={smallerThan}>
           Load More
         </Button>
       </Center>

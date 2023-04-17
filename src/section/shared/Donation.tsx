@@ -9,8 +9,11 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function DonationSection() {
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   return (
     <Box pt={80} pb={120}>
       <Box sx={{ height: 560 }}>
@@ -28,13 +31,17 @@ export default function DonationSection() {
           <Stack justify="center" sx={{ height: "100%" }}>
             <Container>
               <Paper p="xl">
-                <Title>We need your support</Title>
+                <Title align={smallerThan ? "center" : "start"}>
+                  We need your support
+                </Title>
                 <Text my="sm">
                   Your support is vital and helps the Museum to share the
                   collection with the world.
                 </Text>
                 <Center>
-                  <Button size="md">Make a donation</Button>
+                  <Button size="md" fullWidth={smallerThan}>
+                    Make a donation
+                  </Button>
                 </Center>
               </Paper>
             </Container>

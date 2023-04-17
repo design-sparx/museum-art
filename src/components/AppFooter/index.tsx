@@ -24,6 +24,7 @@ import {
   IconMap2,
 } from "@tabler/icons-react";
 import React from "react";
+import { useMediaQuery } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -138,6 +139,7 @@ interface FooterLinksProps {
 
 export default function AppFooter({ data }: FooterLinksProps) {
   const { classes } = useStyles();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
 
   const actionIconProps: ActionIconProps = {
     size: "xl",
@@ -170,9 +172,15 @@ export default function AppFooter({ data }: FooterLinksProps) {
   return (
     <footer className={classes.footer}>
       <Container fluid className={classes.container}>
-        <Flex align="center" justify="space-between">
+        <Flex
+          align="center"
+          justify="space-between"
+          direction={{ base: "column", sm: "row" }}
+        >
           <Stack spacing="sm">
-            <Title order={2}>Connect with us</Title>
+            <Title order={2} align={smallerThan ? "center" : "start"}>
+              Connect with us
+            </Title>
             <Flex gap="sm">
               <ActionIcon title="facebook" {...actionIconProps}>
                 <IconBrandFacebook />
@@ -191,7 +199,7 @@ export default function AppFooter({ data }: FooterLinksProps) {
               </ActionIcon>
             </Flex>
           </Stack>
-          <Stack spacing="sm">
+          <Stack spacing="sm" mt={smallerThan ? "md" : 0}>
             <Text size="lg">
               Enter your email address to receive our newsletter
             </Text>
@@ -206,7 +214,14 @@ export default function AppFooter({ data }: FooterLinksProps) {
       </Container>
       <Divider />
       <Container fluid className={classes.container}>
-        <SimpleGrid cols={4}>
+        <SimpleGrid
+          cols={4}
+          breakpoints={[
+            { maxWidth: "md", cols: 3, spacing: "md" },
+            { maxWidth: "sm", cols: 2, spacing: "sm" },
+            { maxWidth: "xs", cols: 1, spacing: "sm" },
+          ]}
+        >
           <Stack>
             <Stack spacing="xs">
               <Flex gap="md" align="center">
@@ -235,7 +250,12 @@ export default function AppFooter({ data }: FooterLinksProps) {
       </Container>
       <Divider />
       <Container fluid className={classes.container}>
-        <Flex justify="space-between" align="center">
+        <Flex
+          justify="space-between"
+          align="center"
+          direction={{ base: "column", sm: "row" }}
+          gap={{ base: "sm", sm: "lg" }}
+        >
           <Flex gap="sm" justify="center" align="center">
             <Anchor>Privacy Policy</Anchor>
             <Anchor>Cookies</Anchor>

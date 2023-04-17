@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  ActionIcon,
   Button,
   Container,
   createStyles,
@@ -10,7 +9,8 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
-import { IconArrowLeft, IconArrowRight, IconSearch } from "@tabler/icons-react";
+import { IconSearch } from "@tabler/icons-react";
+import { useMediaQuery } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -24,6 +24,10 @@ const useStyles = createStyles((theme) => ({
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+
+    [theme.fn.smallerThan("sm")]: {
+      minHeight: rem(500),
+    },
   },
   container: {
     height: rem(650),
@@ -43,7 +47,7 @@ const useStyles = createStyles((theme) => ({
   title: {
     color: theme.white,
     fontSize: rem(60),
-    fontWeight: 900,
+    fontWeight: 800,
     lineHeight: 1.1,
 
     [theme.fn.smallerThan("sm")]: {
@@ -52,11 +56,10 @@ const useStyles = createStyles((theme) => ({
     },
 
     [theme.fn.smallerThan("xs")]: {
-      fontSize: rem(28),
+      fontSize: rem(32),
       lineHeight: 1.3,
     },
   },
-
   description: {
     color: theme.white,
     maxWidth: 600,
@@ -65,12 +68,13 @@ const useStyles = createStyles((theme) => ({
 
     [theme.fn.smallerThan("sm")]: {
       maxWidth: "100%",
-      fontSize: theme.fontSizes.sm,
+      fontSize: theme.fontSizes.md,
     },
   },
 }));
 export default function HeroSection() {
   const { classes, theme } = useStyles();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
 
   return (
     <div className={classes.wrapper}>
@@ -90,7 +94,7 @@ export default function HeroSection() {
           <TextInput
             icon={<IconSearch size="1.1rem" stroke={1.5} />}
             radius="xs"
-            size="xl"
+            size={smallerThan ? "lg" : "xl"}
             rightSection={
               <Button leftIcon={<IconSearch />} size="md" variant="white">
                 Search
@@ -98,7 +102,7 @@ export default function HeroSection() {
             }
             placeholder="Enter a keyword, person, place"
             rightSectionWidth={136}
-            sx={{ width: 720 }}
+            sx={{ width: smallerThan ? "100%" : 720 }}
           />
         </Container>
       </div>

@@ -10,11 +10,14 @@ import {
   Title,
   useMantineTheme,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 const { Item } = List;
 
 export default function InfoSection() {
   const theme = useMantineTheme();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   const paperProps: PaperProps = {
     p: "md",
     sx: {
@@ -77,9 +80,9 @@ export default function InfoSection() {
             <Text mb="md">Email: email@museum.org</Text>
             <Text mb="md">Phone: +000 000 000</Text>
             <Flex gap="sm" wrap="wrap">
-              <Button>Donate Now</Button>
-              <Button>Make a regular donation</Button>
-              <Button>Donate an artifact</Button>
+              <Button fullWidth={smallerThan}>Donate Now</Button>
+              <Button fullWidth={smallerThan}>Make a regular donation</Button>
+              <Button fullWidth={smallerThan}>Donate an artifact</Button>
             </Flex>
           </Paper>
         </Grid.Col>

@@ -1,6 +1,8 @@
 import {
   Badge,
   Box,
+  Button,
+  ButtonProps,
   createStyles,
   Flex,
   Image,
@@ -9,7 +11,11 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
-import { IconCalendarTime } from "@tabler/icons-react";
+import {
+  IconCalendarTime,
+  IconChevronDown,
+  IconChevronUp,
+} from "@tabler/icons-react";
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -36,6 +42,11 @@ interface IProps {
 const EventsCard = ({ item }: IProps) => {
   const { title, type, description, date, image } = item;
   const { classes } = useStyles();
+
+  const buttonProps: ButtonProps = {
+    mt: "xs",
+    variant: "light",
+  };
 
   return (
     <Paper
@@ -66,7 +77,19 @@ const EventsCard = ({ item }: IProps) => {
               {date}
             </Text>
           </Flex>
-          <Spoiler maxHeight={48} showLabel="Show more" hideLabel="Hide">
+          <Spoiler
+            maxHeight={48}
+            showLabel={
+              <Button leftIcon={<IconChevronDown size={18} />} {...buttonProps}>
+                Read more
+              </Button>
+            }
+            hideLabel={
+              <Button leftIcon={<IconChevronUp size={18} />} {...buttonProps}>
+                Show less
+              </Button>
+            }
+          >
             <Text>{description}</Text>
           </Spoiler>
         </Stack>

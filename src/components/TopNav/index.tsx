@@ -11,7 +11,6 @@ import {
   rem,
   ScrollArea,
   Stack,
-  Text,
   Title,
   UnstyledButton,
 } from "@mantine/core";
@@ -26,7 +25,6 @@ const useStyles = createStyles((theme) => ({
     border: "none",
     padding: `${theme.spacing.lg} ${theme.spacing.xl}`,
   },
-
   link: {
     [theme.fn.smallerThan("sm")]: {},
 
@@ -50,8 +48,8 @@ const useStyles = createStyles((theme) => ({
     }),
 
     [theme.fn.smallerThan("sm")]: {
-      backgroundColor: theme.colors.violet[7],
-      color: theme.white,
+      backgroundColor: theme.colors.violet[0],
+      color: theme.colors.violet[8],
     },
   },
   hiddenMobile: {
@@ -59,7 +57,6 @@ const useStyles = createStyles((theme) => ({
       display: "none",
     },
   },
-
   hiddenDesktop: {
     [theme.fn.largerThan("sm")]: {
       display: "none",
@@ -100,11 +97,9 @@ export default function TopNav({ handleOpenSearch }: IProps) {
     return router.pathname.includes(url.toLowerCase());
   };
 
-  console.log(router.pathname);
-
   const buttonProps: ButtonProps = {
     variant: "subtle",
-    size: "sm",
+    size: "md",
   };
 
   const links = mockdata.map((item) => (
@@ -169,18 +164,19 @@ export default function TopNav({ handleOpenSearch }: IProps) {
             my="sm"
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />
-          <Stack spacing={2} px="sm" mb="sm">
+          <Stack spacing="sm" px="sm" mb="sm">
             {links}
-            <Button variant="subtle">Join & Give</Button>
-            <Button variant="subtle">Museum Shop</Button>
+            <Button size="md" component={Link} href="/donation">
+              Donate
+            </Button>
           </Stack>
           <Divider
             my="sm"
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />{" "}
           <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button variant="subtle">Join & Give</Button>
+            <Button variant="subtle">Museum Shop</Button>
           </Group>
         </ScrollArea>
       </Drawer>

@@ -8,6 +8,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 const data = [
   {
@@ -31,15 +32,25 @@ const data = [
 ];
 
 export default function VisitSection() {
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   return (
     <Container fluid pt={80} pb={120}>
-      <Title size={48} align="center" mb="md">
+      <Title size={smallerThan ? 32 : 48} align="center" mb="md">
         Visit the Museum
       </Title>
       <Text size="lg" align="center" mb="xl">
         3 steps to be safe (COVID-19 Guidelines Observed)
       </Text>
-      <SimpleGrid cols={3} spacing="lg">
+      <SimpleGrid
+        cols={3}
+        spacing="lg"
+        breakpoints={[
+          { maxWidth: "md", cols: 3, spacing: "md" },
+          { maxWidth: "sm", cols: 2, spacing: "sm" },
+          { maxWidth: "xs", cols: 1, spacing: "sm" },
+        ]}
+      >
         {data.map((item, i) => (
           <Paper key={`visit-item-${i}`}>
             <Image src={item.image} alt={item.title} height={320} radius="sm" />
@@ -47,7 +58,9 @@ export default function VisitSection() {
               {item.title}
             </Text>
             <Text my="sm">{item.text}</Text>
-            <Button variant="light">Learn More</Button>
+            <Button variant="light" fullWidth={smallerThan}>
+              Learn More
+            </Button>
           </Paper>
         ))}
       </SimpleGrid>

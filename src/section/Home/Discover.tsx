@@ -5,6 +5,7 @@ import {
   Center,
   Container,
   createStyles,
+  Divider,
   Grid,
   Image,
   Paper,
@@ -13,21 +14,23 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   card: {
-    border: `1px solid transparent`,
-
     "&:hover, &:focus": {
-      backgroundColor: theme.colors.gray[0],
+      transition: "all ease 200ms",
     },
   },
 }));
 
 export default function DiscoverSection() {
   const { classes } = useStyles();
+  const smallerThan = useMediaQuery("(max-width: 600px)");
+
   const buttonProps: ButtonProps = {
     variant: "light",
+    fullWidth: smallerThan,
   };
 
   return (
@@ -39,12 +42,12 @@ export default function DiscoverSection() {
         <Text size="lg">Get Latest Updates and News</Text>
       </Box>
       <Paper>
-        <Grid>
+        <Grid sx={{ alignItems: "center" }}>
           <Grid.Col lg={6}>
             <Image
               src="https://images.unsplash.com/photo-1610494940231-a07875fb25fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
               alt=""
-              height={420}
+              height={smallerThan ? 320 : 420}
               fit="cover"
               radius="sm"
             />
@@ -72,14 +75,25 @@ export default function DiscoverSection() {
                 malesuada fames ac. Faucibus ornare suspendisse sed nisi lacus.
                 Arcu dictum varius duis at. Porttitor rhoncus dolor purus non.
               </Text>
-              <Button {...buttonProps}>Continue reading</Button>
+              <Button {...buttonProps} size={smallerThan ? "sm" : "md"}>
+                Continue reading
+              </Button>
             </Stack>
           </Grid.Col>
         </Grid>
       </Paper>
-      <SimpleGrid cols={4} mt="lg">
+      {!smallerThan && <Divider my="xl" />}
+      <SimpleGrid
+        cols={4}
+        mt="lg"
+        breakpoints={[
+          { maxWidth: "md", cols: 3, spacing: "md" },
+          { maxWidth: "sm", cols: 2, spacing: "sm" },
+          { maxWidth: "xs", cols: 1, spacing: "sm" },
+        ]}
+      >
         {Array.from({ length: 4 }).map((_, i) => (
-          <Paper p="md" key={`news-item-${i}`} className={classes.card}>
+          <Paper key={`news-item-${i}`} className={classes.card}>
             <Text size="lg" weight={600} mb="md">
               Lorem ipsum dolor sit amet
             </Text>
@@ -92,8 +106,8 @@ export default function DiscoverSection() {
           </Paper>
         ))}
       </SimpleGrid>
-      <Center mt="xl">
-        <Button size="xl" variant="light">
+      <Center mt={smallerThan ? 36 : "xl"}>
+        <Button size="xl" variant="light" fullWidth={smallerThan}>
           Discover more content
         </Button>
       </Center>
