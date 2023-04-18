@@ -1,4 +1,4 @@
-# Meal mart food delivery application
+# Museum, art & culture application
 
 [Online Demo](https://museum-art.netlify.app/ "Online Demo")
 
