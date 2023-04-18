@@ -28,6 +28,7 @@ This is a web application built using Next Js, template - Typescript.
 - eslint v8 - https://eslint.org/docs/latest/user-guide/getting-started
 
 ### Screenshot
+![image](https://user-images.githubusercontent.com/26582923/232856644-981faea4-f76b-467a-9d07-3f2f720c7f6c.png)
 
 ### Software
 
