@@ -65,18 +65,27 @@ export default function SearchModal({ opened, close }: IProps) {
       <Container px={0}>
         <Center sx={{ height: rem(600) }}>
           <Stack spacing="xl">
-            <Text size="lg" color="dimmed" transform="uppercase">
+            <Text size="lg" transform="uppercase">
               Search Events
             </Text>
             <TextInput
               size="lg"
               placeholder="what are you looking for?"
               icon={<IconSearch size={18} />}
+              aria-label="Search events"
             />
             <Button size="lg" sx={{ width: "fit-content" }}>
               Search
             </Button>
-            <SimpleGrid cols={3} spacing="lg">
+            <SimpleGrid
+              cols={3}
+              spacing="lg"
+              breakpoints={[
+                { maxWidth: "md", cols: 1, spacing: "md" },
+                { maxWidth: "sm", cols: 1, spacing: "sm" },
+                { maxWidth: "xs", cols: 1, spacing: "sm" },
+              ]}
+            >
               <Paper {...paperProps}>
                 <Text {...titleTextProps}>
                   Best forests to visit in North America

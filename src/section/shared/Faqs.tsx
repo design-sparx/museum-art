@@ -30,32 +30,27 @@ export default function FaqsSection() {
       <Title align="center" className={classes.title}>
         Frequently Asked Questions
       </Title>
-
       <Accordion variant="separated">
         <Accordion.Item className={classes.item} value="reset-password">
           <Accordion.Control>What are our opening hours?</Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
-
         <Accordion.Item className={classes.item} value="another-account">
           <Accordion.Control>
             How long does it take to look aroung?
           </Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
-
         <Accordion.Item className={classes.item} value="newsletter">
           <Accordion.Control>
             Are there printed or audio guides?
           </Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
-
         <Accordion.Item className={classes.item} value="credit-card">
           <Accordion.Control>Do you give talks?</Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
-
         <Accordion.Item className={classes.item} value="payment">
           <Accordion.Control>Is there a shop or cafe`?</Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
@@ -70,7 +65,7 @@ export default function FaqsSection() {
           <Accordion.Control>How accessible is the museum?</Accordion.Control>
           <Accordion.Panel>{placeholder}</Accordion.Panel>
         </Accordion.Item>
-        <Accordion.Item className={classes.item} value="payment">
+        <Accordion.Item className={classes.item} value="suitable">
           <Accordion.Control>
             Is the museum suitable for families?
           </Accordion.Control>

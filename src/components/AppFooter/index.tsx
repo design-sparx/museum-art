@@ -14,6 +14,7 @@ import {
   Text,
   TextInput,
   Title,
+  Tooltip,
 } from "@mantine/core";
 import {
   IconBrandFacebook,
@@ -144,7 +145,7 @@ export default function AppFooter({ data }: FooterLinksProps) {
 
   const actionIconProps: ActionIconProps = {
     size: smallerThan ? "lg" : "xl",
-    variant: "filled",
+    variant: "light",
     radius: "xl",
     color: "violet",
   };
@@ -192,32 +193,45 @@ export default function AppFooter({ data }: FooterLinksProps) {
               Connect with us
             </Title>
             <Flex gap="sm">
-              <ActionIcon title="facebook" {...actionIconProps}>
-                <IconBrandFacebook />
-              </ActionIcon>
-              <ActionIcon title="twitter" {...actionIconProps}>
-                <IconBrandTwitter />
-              </ActionIcon>
-              <ActionIcon title="instagram" {...actionIconProps}>
-                <IconBrandInstagram />
-              </ActionIcon>
-              <ActionIcon title="youtube" {...actionIconProps}>
-                <IconBrandYoutube />
-              </ActionIcon>
-              <ActionIcon title="linkedin" {...actionIconProps}>
-                <IconBrandLinkedin />
-              </ActionIcon>
+              <Tooltip label="Facebook">
+                <ActionIcon title="facebook" {...actionIconProps}>
+                  <IconBrandFacebook />
+                </ActionIcon>
+              </Tooltip>
+              <Tooltip label="Twitter">
+                <ActionIcon title="twitter" {...actionIconProps}>
+                  <IconBrandTwitter />
+                </ActionIcon>
+              </Tooltip>
+              <Tooltip label="Instagram">
+                <ActionIcon title="instagram" {...actionIconProps}>
+                  <IconBrandInstagram />
+                </ActionIcon>
+              </Tooltip>
+              <Tooltip label="YouTube">
+                <ActionIcon title="youtube" {...actionIconProps}>
+                  <IconBrandYoutube />
+                </ActionIcon>
+              </Tooltip>
+              <Tooltip label="LinkedIn">
+                <ActionIcon title="linkedin" {...actionIconProps}>
+                  <IconBrandLinkedin />
+                </ActionIcon>
+              </Tooltip>
             </Flex>
           </Stack>
           <Stack spacing="sm" mt={smallerThan ? "md" : 0}>
             <Text size={smallerThan ? "md" : "lg"}>
               Enter your email address to receive our newsletter
             </Text>
-            <Flex gap={smallerThan ? "sm" : "md"}>
-              <TextInput size="md" sx={{ flexGrow: 1 }} />
-              <Button size="md" variant="filled">
-                Signup
-              </Button>
+            <Flex gap={smallerThan ? "sm" : "xs"}>
+              <TextInput
+                size="md"
+                sx={{ flexGrow: 1 }}
+                aria-label="Enter email address"
+                placeholder="Enter email address"
+              />
+              <Button size="md">Signup</Button>
             </Flex>
           </Stack>
         </Flex>
@@ -267,20 +281,26 @@ export default function AppFooter({ data }: FooterLinksProps) {
           gap={{ base: "sm", sm: "lg" }}
         >
           <Flex gap="sm" justify="center" align="center">
-            <Anchor>Privacy Policy</Anchor>
-            <Anchor>Cookies</Anchor>
-            <Anchor>Terms of Use</Anchor>
+            <Anchor weight={500} color="black">
+              Privacy Policy
+            </Anchor>
+            <Anchor weight={500} color="black">
+              Cookies
+            </Anchor>
+            <Anchor weight={500} color="black">
+              Terms of Use
+            </Anchor>
           </Flex>
-          <Text>
-            &copy;{new Date().getFullYear()}&nbsp;Art & History Museum
-          </Text>
-          <Flex justify="center" align="center" gap="xs">
+          <Text>&copy;{new Date().getFullYear()}&nbsp;Museum & Art</Text>
+          <Flex justify="center" align="center" gap={4}>
             <Text>Site created by:&nbsp;</Text>
             <Anchor
               component="a"
               target="_blank"
               href="https://github.com/kelvink96"
               variant="subtle"
+              weight={500}
+              color="black"
             >
               Kelvin
             </Anchor>

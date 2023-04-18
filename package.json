@@ -10,6 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@axe-core/react": "^4.6.1",
     "@emotion/react": "^11.10.6",
     "@emotion/server": "^11.10.0",
     "@mantine/carousel": "^6.0.2",

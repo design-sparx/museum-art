@@ -95,7 +95,7 @@ export default function EventsSection() {
         ))}
       </SimpleGrid>
       <Center mt={smallerThan ? 36 : "xl"}>
-        <Button size="lg" variant="light" fullWidth={smallerThan}>
+        <Button size="lg" variant="outline" fullWidth={smallerThan}>
           Load More
         </Button>
       </Center>

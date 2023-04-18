@@ -109,7 +109,7 @@ export default function DiscoverSection() {
         ))}
       </SimpleGrid>
       <Center mt={smallerThan ? 36 : "xl"}>
-        <Button size="xl" variant="light" fullWidth={smallerThan}>
+        <Button size="xl" variant="outline" fullWidth={smallerThan}>
           Discover more content
         </Button>
       </Center>

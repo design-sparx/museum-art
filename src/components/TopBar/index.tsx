@@ -4,6 +4,7 @@ import {
   Container,
   createStyles,
   Divider,
+  Flex,
   Group,
   Header,
   Paper,
@@ -81,7 +82,9 @@ const useStyles = createStyles((theme) => ({
     textAlign: "center",
     padding: rem(8),
 
-    [theme.fn.smallerThan("sm")]: {},
+    [theme.fn.smallerThan("sm")]: {
+      padding: 0,
+    },
   },
 
   hiddenTablet: {
@@ -111,7 +114,7 @@ const announcementsData = [
 export default function TopBar() {
   const { classes } = useStyles();
   const autoplay = useRef(Autoplay({ delay: 15000 }));
-  const smallerThan = useMediaQuery("(max-width: 769px)");
+  const smallerThan = useMediaQuery("(max-width: 600px)");
 
   const buttonProps: ButtonProps = {
     variant: "subtle",
@@ -120,8 +123,8 @@ export default function TopBar() {
   return (
     <Header height="100%" sx={{ borderBottom: 0 }}>
       <Container className={classes.inner} fluid>
-        <Group spacing="sm" className={classes.leftSection}>
-          <Text size="sm" weight={600}>
+        <Flex gap="sm" align="center" className={classes.leftSection}>
+          <Text size={smallerThan ? "xs" : "sm"} weight={600}>
             OPEN TODAY AT 12 P.M.
           </Text>
           <Divider orientation="vertical" className={classes.hiddenTablet} />
@@ -141,14 +144,18 @@ export default function TopBar() {
             {announcementsData.map((a, i) => (
               <Slide key={`announcement-${i}`}>
                 <Paper className={classes.announcementCard}>
-                  <Text size="sm" weight={500} transform="uppercase">
+                  <Text
+                    size={smallerThan ? "xs" : "sm"}
+                    weight={500}
+                    transform="uppercase"
+                  >
                     {a}
                   </Text>
                 </Paper>
               </Slide>
             ))}
           </Carousel>
-        </Group>
+        </Flex>
         <Group spacing="sm" className={classes.hiddenTablet}>
           <Button {...buttonProps}>Join & Give</Button>
           <Button {...buttonProps}>Museum Shop</Button>

@@ -1,10 +1,10 @@
 import {
   Badge,
   Box,
-  Button,
   ButtonProps,
   createStyles,
   Flex,
+  Group,
   Image,
   Paper,
   Spoiler,
@@ -82,14 +82,16 @@ const EventsCard = ({ item }: IProps) => {
           <Spoiler
             maxHeight={48}
             showLabel={
-              <Button leftIcon={<IconChevronDown size={18} />} {...buttonProps}>
-                Read more
-              </Button>
+              <Group mt="sm" spacing="xs">
+                <IconChevronDown size={18} />
+                <Text weight={500}>Show More</Text>
+              </Group>
             }
             hideLabel={
-              <Button leftIcon={<IconChevronUp size={18} />} {...buttonProps}>
-                Show less
-              </Button>
+              <Group mt="sm" spacing="xs">
+                <IconChevronUp size={18} />
+                <Text weight={500}>Show Less</Text>
+              </Group>
             }
           >
             <Text>{description}</Text>

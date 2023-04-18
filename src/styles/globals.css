@@ -19,7 +19,8 @@ body {
 .mantine-List-itemWrapper,
 .mantine-Alert-message,
 .mantine-Accordion-content,
-.mantine-Menu-itemLabel {
+.mantine-Menu-itemLabel,
+::placeholder {
   font-family: "Poppins", sans-serif !important;
 }
 

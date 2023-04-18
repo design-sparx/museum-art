@@ -100,7 +100,7 @@ export default function Collections() {
       </Title>
       <Stack>{items}</Stack>
       <Center mt={smallerThan ? 36 : "xl"}>
-        <Button size="lg" variant="light" fullWidth={smallerThan}>
+        <Button size="lg" variant="outline" fullWidth={smallerThan}>
           Explore More Featured Collections
         </Button>
       </Center>

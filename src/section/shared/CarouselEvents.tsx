@@ -162,6 +162,12 @@ export default function CarouselEventsSection({ title }: IProps) {
         size="xs"
         mx="auto"
         my="lg"
+        aria-label="Events Progress Bar"
+        {...{
+          "aria-labelledby": "Events Progress Bar",
+          id: "eventProgressBar",
+          title: "Events Progress Bar",
+        }}
       />
       <Carousel
         slideSize="33%"
@@ -180,7 +186,7 @@ export default function CarouselEventsSection({ title }: IProps) {
         {slides}
       </Carousel>
       <Center mt={smallerThan ? 36 : "xl"}>
-        <Button size="lg" variant="light" fullWidth={smallerThan}>
+        <Button size="lg" variant="outline" fullWidth={smallerThan}>
           View all Upcoming Events
         </Button>
       </Center>

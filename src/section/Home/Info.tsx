@@ -19,8 +19,7 @@ const { Col } = Grid;
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor: theme.colors.violet[8],
-    color: theme.white,
+    backgroundColor: theme.colors.violet[0],
     padding: theme.spacing.md,
   },
 }));
@@ -74,7 +73,7 @@ export default function InfoSection() {
                   <Text>
                     Some exhibitions and events carry a separate charge
                   </Text>
-                  <Button variant="white" size="md" fullWidth={smallerThan}>
+                  <Button size="md" fullWidth={smallerThan}>
                     Join Now and Book Online
                   </Button>
                 </Stack>

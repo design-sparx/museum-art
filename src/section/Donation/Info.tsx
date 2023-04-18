@@ -1,7 +1,16 @@
-import { Alert, Anchor, Button, Container, Text, Title } from "@mantine/core";
+import {
+  Alert,
+  Anchor,
+  Button,
+  Container,
+  Text,
+  Title,
+  useMantineTheme,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 export default function InfoSection() {
+  const theme = useMantineTheme();
   const smallerThan = useMediaQuery("(max-width: 600px)");
 
   return (
@@ -21,14 +30,25 @@ export default function InfoSection() {
         The Museum is a non-profit organization. Your donation to Museum is 100%
         tax-deductible.
       </Text>
-      <Button size="md" my={smallerThan ? "xl" : "lg"} fullWidth={smallerThan}>
+      <Button
+        size="md"
+        my={smallerThan ? "xl" : "lg"}
+        fullWidth={smallerThan}
+        variant="filled"
+      >
         Donate now
       </Button>
       <Alert>
         <Text weight={500} size="md">
           Questions? Please refer to the FAQ below or contact the Museum & Art
-          Development department at <Anchor>mail@museum.org</Anchor> or{" "}
-          <Anchor>000.000.0000.</Anchor>
+          Development department at{" "}
+          <Anchor weight={500} color="black" td="underline">
+            mail@museum.org
+          </Anchor>{" "}
+          or{" "}
+          <Anchor weight={500} color="black" td="underline">
+            000.000.0000.
+          </Anchor>
         </Text>
       </Alert>
     </Container>

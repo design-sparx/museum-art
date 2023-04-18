@@ -19,6 +19,7 @@ import { IconSearch } from "@tabler/icons-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import LanguagePicker from "@/components/LanguagePicker";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -37,7 +38,7 @@ const useStyles = createStyles((theme) => ({
   },
   activeLink: {
     backgroundColor: theme.colors.violet[0],
-    borderBottom: `2px solid ${theme.colors.violet[7]}`,
+    borderBottom: `2px solid ${theme.colors.violet[9]}`,
 
     ...theme.fn.hover({
       borderRadius: theme.radius.sm,
@@ -48,7 +49,7 @@ const useStyles = createStyles((theme) => ({
     }),
 
     [theme.fn.smallerThan("md")]: {
-      color: theme.colors.violet[8],
+      color: theme.colors.violet[9],
     },
   },
   hiddenMobile: {
@@ -150,6 +151,7 @@ export default function TopNav({ handleOpenSearch }: IProps) {
             opened={drawerOpened}
             onClick={toggleDrawer}
             className={classes.hiddenDesktop}
+            title="Open menu navigation"
           />
         </Group>
       </Header>
@@ -170,6 +172,18 @@ export default function TopNav({ handleOpenSearch }: IProps) {
           />
           <Stack spacing="sm" px="sm" mb="sm">
             {links}
+            <Button
+              className={classes.link}
+              key="search small button"
+              leftIcon={<IconSearch size={18} />}
+              onClick={() => {
+                closeDrawer();
+                handleOpenSearch();
+              }}
+              {...buttonProps}
+            >
+              Search
+            </Button>
             <Button size="md" component={Link} href="/donation">
               Donate
             </Button>
@@ -178,10 +192,11 @@ export default function TopNav({ handleOpenSearch }: IProps) {
             my="sm"
             color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
           />{" "}
-          <Group position="center" grow pb="xl" px="md">
+          <Stack align="center" spacing="sm" px="sm" mb="sm">
             <Button variant="subtle">Join & Give</Button>
             <Button variant="subtle">Museum Shop</Button>
-          </Group>
+            <LanguagePicker />
+          </Stack>
         </ScrollArea>
       </Drawer>
     </Box>

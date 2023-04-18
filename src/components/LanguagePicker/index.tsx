@@ -44,7 +44,7 @@ const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
     padding: `.4rem 1rem`,
     borderRadius: theme.radius.sm,
     transition: "background-color 150ms ease",
-    color: theme.colors.violet[7],
+    color: theme.colors.violet[9],
 
     "&:hover": {
       backgroundColor:

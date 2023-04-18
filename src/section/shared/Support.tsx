@@ -11,7 +11,7 @@ import { useMediaQuery } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor: theme.colors.violet[8],
+    backgroundColor: theme.colors.violet[9],
     color: theme.white,
 
     "&:hover, &:focus": {
