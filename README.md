@@ -1,3 +1,5 @@
+![Artboard 1](https://github.com/design-sparx/museum-art/assets/26582923/3c5fd77f-6031-448a-8670-ef7fd18a6316)
+
 # Museum, art & culture application
 
 [Online Demo](https://museum-art.netlify.app/ "Online Demo")
